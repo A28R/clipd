@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://cednbypo0lsue"]
+
+[ext_resource type="Script" path="res://scenes/player/Clip.gd" id="1_w0rbx"]
+[ext_resource type="Texture2D" uid="uid://dmhanxyne8bm4" path="res://icon.svg" id="2_po124"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rxy0b"]
+size = Vector2(63, 32)
+
+[node name="Clip" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 5
+script = ExtResource("1_w0rbx")
+metadata/_edit_group_ = true
+
+[node name="ClipShape" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_rxy0b")
+
+[node name="ClipSprite" type="Sprite2D" parent="."]
+rotation = 1.5708
+scale = Vector2(0.25, 0.5)
+texture = ExtResource("2_po124")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="ClipShape" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_rxy0b")

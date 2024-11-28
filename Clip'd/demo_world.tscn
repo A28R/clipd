@@ -1,0 +1,460 @@
+[gd_scene load_steps=5 format=3 uid="uid://cioe0xh8tc7p6"]
+
+[ext_resource type="PackedScene" uid="uid://c7uojemqm3py" path="res://scenes/player/player_1.tscn" id="1_qhirn"]
+[ext_resource type="PackedScene" uid="uid://dtm2npqxofif0" path="res://scenes/player/player_2.tscn" id="2_gt20m"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m14hn"]
+size = Vector2(2008, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_13nol"]
+size = Vector2(50, 1130)
+
+[node name="Demo World" type="Node2D"]
+
+[node name="Player 1" parent="." instance=ExtResource("1_qhirn")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Movement" type="HBoxContainer" parent="CanvasLayer/Control/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="acceleration" type="MarginContainer" parent="CanvasLayer/Control/VBoxContainer/Movement"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/VBoxContainer/Movement/acceleration"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/VBoxContainer/Movement/acceleration/VBoxContainer"]
+layout_mode = 2
+text = "Acceleration"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSlider" type="HSlider" parent="CanvasLayer/Control/VBoxContainer/Movement/acceleration/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+max_value = 1000.0
+
+[node name="invert_controls" type="MarginContainer" parent="CanvasLayer/Control/VBoxContainer/Movement"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/VBoxContainer/Movement/invert_controls"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/VBoxContainer/Movement/invert_controls/VBoxContainer"]
+layout_mode = 2
+text = "Invert Controls"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CheckBox" type="CheckBox" parent="CanvasLayer/Control/VBoxContainer/Movement/invert_controls/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="deceleration" type="MarginContainer" parent="CanvasLayer/Control/VBoxContainer/Movement"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/VBoxContainer/Movement/deceleration"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/VBoxContainer/Movement/deceleration/VBoxContainer"]
+layout_mode = 2
+text = "Deceleration"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSlider" type="HSlider" parent="CanvasLayer/Control/VBoxContainer/Movement/deceleration/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+max_value = 1000.0
+
+[node name="rotation_speed" type="MarginContainer" parent="CanvasLayer/Control/VBoxContainer/Movement"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/VBoxContainer/Movement/rotation_speed"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/VBoxContainer/Movement/rotation_speed/VBoxContainer"]
+layout_mode = 2
+text = "Rotation Speed"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSlider" type="HSlider" parent="CanvasLayer/Control/VBoxContainer/Movement/rotation_speed/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+max_value = 10.0
+step = 0.1
+
+[node name="friction" type="MarginContainer" parent="CanvasLayer/Control/VBoxContainer/Movement"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/VBoxContainer/Movement/friction"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/VBoxContainer/Movement/friction/VBoxContainer"]
+layout_mode = 2
+text = "Friction"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSlider" type="HSlider" parent="CanvasLayer/Control/VBoxContainer/Movement/friction/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+
+[node name="max_speed" type="MarginContainer" parent="CanvasLayer/Control/VBoxContainer/Movement"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/VBoxContainer/Movement/max_speed"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/VBoxContainer/Movement/max_speed/VBoxContainer"]
+layout_mode = 2
+text = "Max Speed"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSlider" type="HSlider" parent="CanvasLayer/Control/VBoxContainer/Movement/max_speed/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+max_value = 1000.0
+
+[node name="clip_speed" type="MarginContainer" parent="CanvasLayer/Control/VBoxContainer/Movement"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/VBoxContainer/Movement/clip_speed"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/VBoxContainer/Movement/clip_speed/VBoxContainer"]
+layout_mode = 2
+text = "Clip Speed"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSlider" type="HSlider" parent="CanvasLayer/Control/VBoxContainer/Movement/clip_speed/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = 100.0
+max_value = 6000.0
+value = 100.0
+
+[node name="Powerups" type="HBoxContainer" parent="CanvasLayer/Control/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="smaller" type="MarginContainer" parent="CanvasLayer/Control/VBoxContainer/Powerups"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/VBoxContainer/Powerups/smaller"]
+layout_mode = 2
+alignment = 1
+
+[node name="CheckBox" type="CheckBox" parent="CanvasLayer/Control/VBoxContainer/Powerups/smaller/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Smaller"
+
+[node name="faster" type="MarginContainer" parent="CanvasLayer/Control/VBoxContainer/Powerups"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/VBoxContainer/Powerups/faster"]
+layout_mode = 2
+alignment = 1
+
+[node name="CheckBox" type="CheckBox" parent="CanvasLayer/Control/VBoxContainer/Powerups/faster/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Faster"
+
+[node name="clipshadow" type="MarginContainer" parent="CanvasLayer/Control/VBoxContainer/Powerups"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/VBoxContainer/Powerups/clipshadow"]
+layout_mode = 2
+alignment = 1
+
+[node name="CheckBox" type="CheckBox" parent="CanvasLayer/Control/VBoxContainer/Powerups/clipshadow/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Clip Shadow"
+
+[node name="clipsize" type="MarginContainer" parent="CanvasLayer/Control/VBoxContainer/Powerups"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/VBoxContainer/Powerups/clipsize"]
+layout_mode = 2
+alignment = 1
+
+[node name="CheckBox" type="CheckBox" parent="CanvasLayer/Control/VBoxContainer/Powerups/clipsize/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Clip Size"
+
+[node name="clipfaster" type="MarginContainer" parent="CanvasLayer/Control/VBoxContainer/Powerups"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/VBoxContainer/Powerups/clipfaster"]
+layout_mode = 2
+alignment = 1
+
+[node name="CheckBox" type="CheckBox" parent="CanvasLayer/Control/VBoxContainer/Powerups/clipfaster/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Clip Faster"
+
+[node name="larger" type="MarginContainer" parent="CanvasLayer/Control/VBoxContainer/Powerups"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/VBoxContainer/Powerups/larger"]
+layout_mode = 2
+alignment = 1
+
+[node name="CheckBox" type="CheckBox" parent="CanvasLayer/Control/VBoxContainer/Powerups/larger/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Larger (for opp)"
+
+[node name="slower" type="MarginContainer" parent="CanvasLayer/Control/VBoxContainer/Powerups"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/VBoxContainer/Powerups/slower"]
+layout_mode = 2
+alignment = 1
+
+[node name="CheckBox" type="CheckBox" parent="CanvasLayer/Control/VBoxContainer/Powerups/slower/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Slower (for opp)"
+
+[node name="nonstop" type="MarginContainer" parent="CanvasLayer/Control/VBoxContainer/Powerups"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/VBoxContainer/Powerups/nonstop"]
+layout_mode = 2
+alignment = 1
+
+[node name="CheckBox" type="CheckBox" parent="CanvasLayer/Control/VBoxContainer/Powerups/nonstop/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Nonstop (for opp)"
+
+[node name="falseclips" type="MarginContainer" parent="CanvasLayer/Control/VBoxContainer/Powerups"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/VBoxContainer/Powerups/falseclips"]
+layout_mode = 2
+alignment = 1
+
+[node name="CheckBox" type="CheckBox" parent="CanvasLayer/Control/VBoxContainer/Powerups/falseclips/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "False Clips"
+
+[node name="ricochet" type="MarginContainer" parent="CanvasLayer/Control/VBoxContainer/Powerups"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/VBoxContainer/Powerups/ricochet"]
+layout_mode = 2
+alignment = 1
+
+[node name="CheckBox" type="CheckBox" parent="CanvasLayer/Control/VBoxContainer/Powerups/ricochet/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Ricochet"
+
+[node name="Control5" type="Control" parent="CanvasLayer/Control/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Control6" type="Control" parent="CanvasLayer/Control/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Control" type="Control" parent="CanvasLayer/Control/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Control2" type="Control" parent="CanvasLayer/Control/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Control3" type="Control" parent="CanvasLayer/Control/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Control4" type="Control" parent="CanvasLayer/Control/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Control7" type="Control" parent="CanvasLayer/Control/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Control8" type="Control" parent="CanvasLayer/Control/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Control9" type="Control" parent="CanvasLayer/Control/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Control10" type="Control" parent="CanvasLayer/Control/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="wall1" type="StaticBody2D" parent="."]
+position = Vector2(-40, 8)
+collision_layer = 7
+collision_mask = 7
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall1"]
+position = Vector2(1004, -10)
+shape = SubResource("RectangleShape2D_m14hn")
+
+[node name="wall2" type="StaticBody2D" parent="."]
+position = Vector2(-157, 908)
+collision_layer = 7
+collision_mask = 7
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall2"]
+position = Vector2(963, -10)
+shape = SubResource("RectangleShape2D_m14hn")
+
+[node name="wall3" type="StaticBody2D" parent="."]
+collision_layer = 7
+collision_mask = 7
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall3"]
+position = Vector2(0, 555)
+shape = SubResource("RectangleShape2D_13nol")
+
+[node name="wall4" type="StaticBody2D" parent="."]
+collision_layer = 7
+collision_mask = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall4"]
+position = Vector2(1598, 495)
+shape = SubResource("RectangleShape2D_13nol")
+
+[node name="Player 2" parent="." instance=ExtResource("2_gt20m")]
+position = Vector2(370, 639)
