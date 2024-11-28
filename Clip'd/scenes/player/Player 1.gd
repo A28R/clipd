@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 #Movement Variables (The constant ones, which are used for reverting back to original)
-const init_max_speed := 610.0
+const init_max_speed := 620.0
 const init_acceleration := 500.0
 const init_deceleration := 200.0
 const init_rotation_speed := 5.0 # degrees per second
