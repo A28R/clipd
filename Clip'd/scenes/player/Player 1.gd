@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 #Movement Variables (The constant ones, which are used for reverting back to original)
-const init_max_speed := 620.0
+const init_max_speed := 600.0
 const init_acceleration := 500.0
 const init_deceleration := 200.0
 const init_rotation_speed := 5.0 # degrees per second
@@ -66,6 +66,14 @@ var clip_speed := 1000
 var is_moving := true
 var is_rotating := false
 var rotation_direction := 0
+var is_alive = true
+
+func kill():
+	is_alive = false
+	death()
+	
+func death():
+	pass
 
 func _ready():
 	accslider.value = acceleration
