@@ -66,6 +66,14 @@ var clip_speed := 1000
 var is_moving := true
 var is_rotating := false
 var rotation_direction := 0
+var is_alive = true
+
+func kill():
+	is_alive = false
+	death()
+	
+func death():
+	pass
 
 func _ready():
 	accslider.value = acceleration
