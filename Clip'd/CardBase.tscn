@@ -1,0 +1,43 @@
+[gd_scene load_steps=3 format=3 uid="uid://oixq2v4bu7f8"]
+
+[ext_resource type="Script" path="res://Cards/CardBase.gd" id="1_5m1kv"]
+[ext_resource type="Texture2D" uid="uid://cc0b4hqs0lhlm" path="res://Cards/Textures/whitebackground.jpg" id="2_1w1gt"]
+
+[node name="CardBase" type="MarginContainer"]
+offset_right = 250.0
+offset_bottom = 350.0
+pivot_offset = Vector2(125, 175)
+script = ExtResource("1_5m1kv")
+
+[node name="Card" type="Sprite2D" parent="."]
+centered = false
+
+[node name="Bars" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="TopGap" type="MarginContainer" parent="Bars"]
+custom_minimum_size = Vector2(0, 270)
+layout_mode = 2
+
+[node name="Bar" type="HBoxContainer" parent="Bars"]
+layout_mode = 2
+alignment = 1
+
+[node name="Name" type="MarginContainer" parent="Bars/Bar"]
+custom_minimum_size = Vector2(0, 76)
+layout_mode = 2
+
+[node name="TextBackground" type="NinePatchRect" parent="Bars/Bar/Name"]
+custom_minimum_size = Vector2(250, 76)
+layout_mode = 2
+texture = ExtResource("2_1w1gt")
+
+[node name="CenterContainer" type="CenterContainer" parent="Bars/Bar/Name"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Bars/Bar/Name/CenterContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 45
+horizontal_alignment = 1
+vertical_alignment = 1
