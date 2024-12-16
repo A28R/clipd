@@ -62,6 +62,11 @@ var clip_speed := 1000
 @onready var ricochet = $"../CanvasLayer/Control/VBoxContainer/Powerups/ricochet/VBoxContainer/CheckBox"
 @onready var falseclips = $"../CanvasLayer/Control/VBoxContainer/Powerups/falseclips/VBoxContainer/CheckBox"
 
+# Card/Deck variables
+const CardBase = preload("res://CardBase.tscn")
+const CardDatabase = preload("res://Cards/CardsDatabase.gd")
+var deck = []
+
 # State variables
 var is_moving := true
 var is_rotating := false
@@ -74,6 +79,36 @@ func kill():
 	
 func death():
 	pass
+
+
+func show_cards():
+	var card_names = CardDatabase.DATA.keys()
+	
+	# Choosing random cards to show
+	var random_card_name1 = card_names[randi() % card_names.size()]
+	var random_card_name2 = card_names[randi() % card_names.size()]
+	while (random_card_name2 == random_card_name1):
+		random_card_name2 = card_names[randi() % card_names.size()]
+	var random_card_name3 = card_names[randi() % card_names.size()]
+	while (random_card_name3 == random_card_name1 or random_card_name3 == random_card_name2):
+		random_card_name3 = card_names[randi() % card_names.size()]
+	
+	# Creating CardBase instances of the chosen random cards
+	var new_card1 = CardBase.instance()
+	new_card1.CardName = random_card_name1
+	var new_card2 = CardBase.instance()
+	new_card2.CardName = random_card_name2
+	var new_card3 = CardBase.instance()
+	new_card3.CardName = random_card_name3
+	
+	# Placing of the cards on the Screen
+	# THIS NEEDS TO BE CHANGED
+	new_card1.position = get_global_mouse_position()
+	new_card2.position = get_global_mouse_position()
+	new_card2.position.x += 250
+	new_card3.position = get_global_mouse_position()
+	new_card3.position.x += 500
+
 
 func _ready():
 	accslider.value = acceleration
