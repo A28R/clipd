@@ -13,6 +13,14 @@ script = ExtResource("1_qo80x")
 position = Vector2(-1.5, -1)
 shape = SubResource("RectangleShape2D_gjplf")
 
+[node name="Area2D" type="Area2D" parent="." groups=["player_2"]]
+position = Vector2(0, -1)
+collision_mask = 5
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-1.5, -1)
+shape = SubResource("RectangleShape2D_gjplf")
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(0, 0, 0, 0.556863)
 position = Vector2(60, -4)

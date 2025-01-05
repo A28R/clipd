@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+
 #Movement Variables (The constant ones, which are used for reverting back to original)
 const init_max_speed := 600.0
 const init_acceleration := 500.0
@@ -75,10 +76,11 @@ var is_alive = true
 
 func kill():
 	is_alive = false
+	print("hit1")
 	death()
 	
 func death():
-	pass
+	$Sprite.visible = false
 
 
 func show_cards():
@@ -145,6 +147,8 @@ func _physics_process(delta):
 	maxlabel.text = "Max Speed: "+str(max_speed)
 	clipSpeedlabel.text = "Clip Speed: "+str(clip_speed)
 	
+	
+	#Collisions
 	
 	#POWERUP CONDITIONALS
 	
@@ -333,4 +337,8 @@ func shoot(speed):
 	else:
 		fc1.queue_free()
 		fc2.queue_free()
-	
+
+# Collisions
+func _on_area_2d_area_entered(area):
+	if area.is_in_group("clip"):
+		kill()

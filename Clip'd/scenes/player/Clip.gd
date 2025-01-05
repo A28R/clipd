@@ -30,4 +30,3 @@ func _physics_process(delta):
 		rotation = velocity.angle() + (2*PI)
 #	velocity = Vector2(0, -speed).rotated(direction)
 #	move_and_slide()
-

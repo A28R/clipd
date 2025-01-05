@@ -75,10 +75,11 @@ var is_alive = true
 
 func kill():
 	is_alive = false
+	print("hit2")
 	death()
 	
 func death():
-	pass
+	$Sprite.visible = false
 
 
 func show_cards():
@@ -334,3 +335,7 @@ func shoot(speed):
 		fc1.queue_free()
 		fc2.queue_free()
 	
+# Collisions
+func _on_area_2d_area_entered(area):
+	if area.is_in_group("clip"):
+		kill()
