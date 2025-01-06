@@ -12,7 +12,6 @@ var scaleNum = 1
 func _ready():
 	scale.x = scaleNum
 	scale.y= scaleNum
-	print(scaleNum)
 	global_position = spawnPos
 	global_rotation = spawnRot
 	velocity = Vector2(0, -speed).rotated(direction)

@@ -337,5 +337,6 @@ func shoot(speed):
 	
 # Collisions
 func _on_area_2d_area_entered(area):
-	if area.is_in_group("clip"):
-		kill()
+	kill()
+
+
