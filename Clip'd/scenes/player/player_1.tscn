@@ -19,9 +19,9 @@ metadata/_edit_group_ = true
 position = Vector2(-1.5, -1)
 shape = SubResource("RectangleShape2D_54xbv")
 
-[node name="Area2D" type="Area2D" parent="." groups=["player_1"]]
+[node name="Player1Area" type="Area2D" parent="." groups=["player_1"]]
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Player1Area"]
 position = Vector2(-1.5, 0)
 shape = SubResource("RectangleShape2D_rfcou")
 
@@ -48,5 +48,4 @@ modulate = Color(0, 0, 1, 1)
 rotation = 1.5708
 texture = ExtResource("2_v6vbe")
 
-[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="area_entered" from="Player1Area" to="." method="_on_player_1_area_area_entered"]

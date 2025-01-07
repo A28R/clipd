@@ -7,6 +7,7 @@ var speed : int
 var ricochet = false
 var collisionCount = 0
 var scaleNum = 1
+var deactivated = false
 
 
 func _ready():
@@ -18,14 +19,29 @@ func _ready():
 
 
 func _physics_process(delta):
-	
-	var collision = move_and_collide(velocity*delta)
-	
-	if collision:
-		if collisionCount ==1:
-			queue_free()
-		collisionCount+=1
-		velocity = velocity.bounce(collision.get_normal())
-		rotation = velocity.angle() + (2*PI)
+	if deactivated == false:
+		var collision = move_and_collide(velocity*delta)
+		
+		if collision:
+			if collisionCount ==1:
+				rotation = velocity.angle() + (2*PI)
+				velocity = Vector2.ZERO
+				deactivated= true
+			if deactivated == false:
+				collisionCount+=1
+				velocity = velocity.bounce(collision.get_normal())
+				rotation = velocity.angle() + (2*PI)
 #	velocity = Vector2(0, -speed).rotated(direction)
 #	move_and_slide()
+
+
+
+
+func _on_clip_area_area_entered(area):
+	if deactivated == true:
+		if area.name.to_lower() == "player1area":
+			queue_free()
+			Global.p1inventory +=1
+		elif area.name.to_lower() == "player2area":
+			queue_redraw()
+			Global.p2inventory +=1

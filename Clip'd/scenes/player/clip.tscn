@@ -10,6 +10,7 @@ size = Vector2(63, 32)
 size = Vector2(71, 35)
 
 [node name="Clip" type="CharacterBody2D"]
+scale = Vector2(1.2, 1.2)
 script = ExtResource("1_w0rbx")
 metadata/_edit_group_ = true
 
@@ -22,8 +23,10 @@ rotation = 1.5708
 scale = Vector2(0.25, 0.5)
 texture = ExtResource("2_po124")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="ClipArea" type="Area2D" parent="."]
 
-[node name="ClipShape" type="CollisionShape2D" parent="Area2D"]
+[node name="ClipShape" type="CollisionShape2D" parent="ClipArea"]
 position = Vector2(0.5, 0.5)
 shape = SubResource("RectangleShape2D_gat4s")
+
+[connection signal="area_entered" from="ClipArea" to="." method="_on_clip_area_area_entered"]

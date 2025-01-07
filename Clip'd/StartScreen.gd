@@ -13,3 +13,7 @@ func _process(delta):
 
 func _on_demo_pressed():
 	get_tree().change_scene_to_file("res://demo_world.tscn")
+
+
+func _on_play_pressed():
+	get_tree().change_scene_to_file("res://scenes/arenas/sample_arena.tscn")

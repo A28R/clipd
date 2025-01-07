@@ -16,11 +16,11 @@ script = ExtResource("1_qo80x")
 position = Vector2(-1.5, -1)
 shape = SubResource("RectangleShape2D_gjplf")
 
-[node name="Area2D" type="Area2D" parent="." groups=["player_2"]]
+[node name="Player2Area" type="Area2D" parent="." groups=["player_2"]]
 position = Vector2(0, -1)
 collision_mask = 5
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Player2Area"]
 position = Vector2(-1.5, 0)
 shape = SubResource("RectangleShape2D_f6g6u")
 
@@ -48,5 +48,4 @@ self_modulate = Color(1, 0, 0, 1)
 rotation = 1.5708
 texture = ExtResource("2_itwwb")
 
-[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="area_entered" from="Player2Area" to="." method="_on_player_2_area_area_entered"]

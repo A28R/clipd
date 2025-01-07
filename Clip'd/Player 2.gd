@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+
 #Movement Variables (The constant ones, which are used for reverting back to original)
 const init_max_speed := 600.0
 const init_acceleration := 500.0
@@ -25,6 +26,16 @@ var clipshadow_amount = 0.5
 var clipfaster_amount = 2
 var clipsize_amount = 1.5
 var falseclip_mod_dif = 0.3
+
+
+# powerup booleans
+var nonstopper = false
+var ricocheter = false
+var false_clipper = false
+var clipsizer = false
+var clipshadower = false
+var clipfaster = false
+
 
 # Clip movement
 var clip_speed := 1000
@@ -75,7 +86,7 @@ var is_alive = true
 
 func kill():
 	is_alive = false
-	print("hit2")
+	print("hit1")
 	death()
 	
 func death():
@@ -95,11 +106,11 @@ func show_cards():
 		random_card_name3 = card_names[randi() % card_names.size()]
 	
 	# Creating CardBase instances of the chosen random cards
-	var new_card1 = CardBase.instance()
+	var new_card1 = CardBase.instantiate()
 	new_card1.CardName = random_card_name1
-	var new_card2 = CardBase.instance()
+	var new_card2 = CardBase.instantiate()
 	new_card2.CardName = random_card_name2
-	var new_card3 = CardBase.instance()
+	var new_card3 = CardBase.instantiate()
 	new_card3.CardName = random_card_name3
 	
 	# Placing of the cards on the Screen
@@ -111,70 +122,88 @@ func show_cards():
 	new_card3.position.x += 500
 
 
+
 func _ready():
-	accslider.value = acceleration
-	acclabel.text = "Acceleration: "+str(acceleration)
-	
-	decslider.value = deceleration
-	declabel.text = "Deceleration: "+str(deceleration)
-	rotslider.value = rotation_speed
-	rotlabel.text = "Rotation Speed: "+str(rotation_speed)
-	
-	frislider.value = friction
-	frilabel.text = "Friction: "+str(friction)
-	
-	maxslider.value = max_speed
-	maxlabel.text = "Max Speed: "+str(max_speed)
-	
-	clsslider.value = clip_speed
-	clipSpeedlabel.text = "Clip Speed: "+str(clip_speed)
+
+	print(get_tree().current_scene.name)
+	if get_tree().current_scene.name.to_lower() == "demo world":
+		accslider.value = acceleration
+		acclabel.text = "Acceleration: "+str(acceleration)
+		
+		decslider.value = deceleration
+		declabel.text = "Deceleration: "+str(deceleration)
+		rotslider.value = rotation_speed
+		rotlabel.text = "Rotation Speed: "+str(rotation_speed)
+		
+		frislider.value = friction
+		frilabel.text = "Friction: "+str(friction)
+		
+		maxslider.value = max_speed
+		maxlabel.text = "Max Speed: "+str(max_speed)
+		
+		clsslider.value = clip_speed
+		clipSpeedlabel.text = "Clip Speed: "+str(clip_speed)
 
 
 func _physics_process(delta):
+	var isDemo = get_tree().current_scene.name.to_lower() == "demo world"
 	
-	acceleration = accslider.value
-	deceleration = decslider.value
-	rotation_speed = rotslider.value
-	friction = frislider.value
-	max_speed = maxslider.value
-	clip_speed = clsslider.value
+	if isDemo == true:
+		nonstopper = nonstop.is_pressed()
+		ricocheter = ricochet.is_pressed()
+		false_clipper = falseclips.is_pressed()
+		clipsizer = clipsizebox.is_pressed()
+		clipshadower = clipshadowbox.is_pressed()
+		clipfaster = clipfasterbox.is_pressed()
+		
 
-	acclabel.text = "Acceleration: "+str(acceleration)
-	declabel.text = "Deceleration: "+str(deceleration)
-	rotlabel.text = "Rotation Speed: "+str(rotation_speed)
-	frilabel.text = "Friction: "+str(friction)
-	maxlabel.text = "Max Speed: "+str(max_speed)
-	clipSpeedlabel.text = "Clip Speed: "+str(clip_speed)
 	
-	
-	#POWERUP CONDITIONALS
-	
-	if smallerbox.is_pressed() == true:
-		scale.x = smaller_amount
-		scale.y = smaller_amount
-	elif largerbox.is_pressed() == true:
-		scale.x = larger_amount
-		scale.y = larger_amount
-	else:
-		scale.x = 1
-		scale.y = 1
+	if isDemo == true:
+		acceleration = accslider.value
+		deceleration = decslider.value
+		rotation_speed = rotslider.value
+		friction = frislider.value
+		max_speed = maxslider.value
+		clip_speed = clsslider.value
+
+		acclabel.text = "Acceleration: "+str(acceleration)
+		declabel.text = "Deceleration: "+str(deceleration)
+		rotlabel.text = "Rotation Speed: "+str(rotation_speed)
+		frilabel.text = "Friction: "+str(friction)
+		maxlabel.text = "Max Speed: "+str(max_speed)
+		clipSpeedlabel.text = "Clip Speed: "+str(clip_speed)
 		
-	if fasterbox.is_pressed():
-		max_speed = init_max_speed *faster_amount
-		acceleration = init_acceleration *faster_amount
-		deceleration = init_deceleration *faster_amount
-		rotation_speed = init_rotation_speed *faster_amount
-	elif slowerbox.is_pressed():
-		max_speed = init_max_speed *slower_amount
-		acceleration = init_acceleration *slower_amount
-		deceleration = init_deceleration *slower_amount
-		rotation_speed = init_rotation_speed *slower_amount
-	else:
-		max_speed = init_max_speed 
-		acceleration = init_acceleration 
-		deceleration = init_deceleration 
-		rotation_speed = init_rotation_speed 
 		
+		#Collisions
+		
+		#POWERUP CONDITIONALS
+		
+		if smallerbox.is_pressed() == true:
+			scale.x = smaller_amount
+			scale.y = smaller_amount
+		elif largerbox.is_pressed() == true:
+			scale.x = larger_amount
+			scale.y = larger_amount
+		else:
+			scale.x = 1
+			scale.y = 1
+			
+		if fasterbox.is_pressed():
+			max_speed = init_max_speed *faster_amount
+			acceleration = init_acceleration *faster_amount
+			deceleration = init_deceleration *faster_amount
+			rotation_speed = init_rotation_speed *faster_amount
+		elif slowerbox.is_pressed():
+			max_speed = init_max_speed *slower_amount
+			acceleration = init_acceleration *slower_amount
+			deceleration = init_deceleration *slower_amount
+			rotation_speed = init_rotation_speed *slower_amount
+		else:
+			max_speed = init_max_speed 
+			acceleration = init_acceleration 
+			deceleration = init_deceleration 
+			rotation_speed = init_rotation_speed 
+			
 		
 	# Get input
 	var input_vector = Vector2.ZERO
@@ -183,38 +212,67 @@ func _physics_process(delta):
 		is_moving = false
 	
 	# Handle rotation input
-	if Input.is_action_pressed("p2move_right"):
-		if invbox.is_pressed() == true:
-			rotation_direction = -1
+	if isDemo == true:
+		if Input.is_action_pressed("p2move_right"):
+			if invbox.is_pressed() == true:
+				rotation_direction = -1
+			else:
+				rotation_direction = 1
+			is_rotating = true
+		elif Input.is_action_pressed("p2move_left"):
+			if invbox.is_pressed() == true:
+				rotation_direction = 1
+			else:
+				rotation_direction = -1
+			is_rotating = true
 		else:
-			rotation_direction = 1
-		is_rotating = true
-	elif Input.is_action_pressed("p2move_left"):
-		if invbox.is_pressed() == true:
-			rotation_direction = 1
-		else:
-			rotation_direction = -1
-		is_rotating = true
+			rotation_direction = 0
+			is_rotating = false
 	else:
-		rotation_direction = 0
-		is_rotating = false
+		if Input.is_action_pressed("p2move_right"):
+			rotation_direction = 1
+			is_rotating = true
+		elif Input.is_action_pressed("p2move_left"):
+			rotation_direction = -1
+			is_rotating = true
+		else:
+			rotation_direction = 0
+			is_rotating = false
 		
-	if Input.is_action_just_released("p2move_stop"):
-		if nonstop.is_pressed() == false and stopped == true:
-			if is_rotating:
-				is_rotating = false
-			stopped = !stopped
-		elif nonstop.is_pressed() == true and stopped == true:
-			stopped = false
-			if is_rotating:
-				is_rotating = false
-		elif nonstop.is_pressed() == false and stopped == false:
-			if is_rotating:
-				is_rotating = false
-			stopped = !stopped
+	if isDemo == true:
+	
+		if Input.is_action_just_released("p2move_stop"):
+			if nonstop.is_pressed() == false and stopped == true:
+				if is_rotating:
+					is_rotating = false
+				stopped = !stopped
+			elif nonstop.is_pressed() == true and stopped == true:
+				stopped = false
+				if is_rotating:
+					is_rotating = false
+			elif nonstop.is_pressed() == false and stopped == false:
+				if is_rotating:
+					is_rotating = false
+				stopped = !stopped
+	else:
+		if Input.is_action_just_released("p2move_stop"):
+			if nonstopper == false and stopped == true:
+				if is_rotating:
+					is_rotating = false
+				stopped = !stopped
+			elif nonstopper == true and stopped == true:
+				stopped = false
+				if is_rotating:
+					is_rotating = false
+			elif nonstopper == false and stopped == false:
+				if is_rotating:
+					is_rotating = false
+				stopped = !stopped
 				
 	if Input.is_action_just_released("p2shoot"):
-		shoot(clip_speed)
+		if Global.p2inventory >0:
+			shoot(clip_speed)
+			Global.p2inventory -=1
 	
 	# Rotate
 	if is_rotating:
@@ -255,7 +313,7 @@ func shoot(speed):
 	
 	
 	#clip powerups
-	if clipshadowbox.is_pressed():
+	if clipshadower:
 		c.modulate = Color(1,1,1,clipshadow_amount)
 		fc1.modulate = Color(1,1,1,clipshadow_amount - falseclip_mod_dif)
 		fc2.modulate = Color(1,1,1,clipshadow_amount - falseclip_mod_dif)
@@ -263,7 +321,7 @@ func shoot(speed):
 		c.modulate = Color(1,1,1,1)
 		fc1.modulate = Color(1,1,1, 1 - falseclip_mod_dif)
 		fc2.modulate = Color(1,1,1, 1 - falseclip_mod_dif)
-	if clipfasterbox.is_pressed():
+	if clipfaster:
 		c.velocity = Vector2(0, -speed*clipfaster_amount).rotated(clipSpawn.global_rotation+deg_to_rad(90))
 		fc1.velocity = Vector2(0, -speed*clipfaster_amount).rotated(falseClipSpawn1.global_rotation+deg_to_rad(90))
 		fc2.velocity = Vector2(0, -speed*clipfaster_amount).rotated(falseClipSpawn2.global_rotation+deg_to_rad(90))
@@ -272,7 +330,7 @@ func shoot(speed):
 		fc1.velocity = Vector2(0, -speed).rotated(falseClipSpawn1.global_rotation+deg_to_rad(90))
 		fc2.velocity = Vector2(0, -speed).rotated(falseClipSpawn2.global_rotation+deg_to_rad(90))
 		
-	if clipsizebox.is_pressed():
+	if clipsizer:
 		
 		#adjusts the clip spawns so they don't collide if the clips are enlarged
 		clipSpawn.position.x = 180
@@ -286,19 +344,19 @@ func shoot(speed):
 		c.get_node("ClipSprite").scale.x = (c.get_node("ClipSprite").scale.x) * clipsize_amount
 		c.get_node("ClipSprite").scale.y = (c.get_node("ClipSprite").scale.y) * clipsize_amount
 		c.get_node("ClipShape").scale = Vector2(clipsize_amount,clipsize_amount)
-		c.get_node("Area2D").scale = Vector2(clipsize_amount,clipsize_amount)
+		c.get_node("ClipArea").scale = Vector2(clipsize_amount,clipsize_amount)
 		
 		#scales the first false clip
 		fc1.get_node("ClipSprite").scale.x = (fc1.get_node("ClipSprite").scale.x) * clipsize_amount
 		fc1.get_node("ClipSprite").scale.y = (fc1.get_node("ClipSprite").scale.y) * clipsize_amount
 		fc1.get_node("ClipShape").scale = Vector2(clipsize_amount,clipsize_amount)
-		fc1.get_node("Area2D").scale = Vector2(clipsize_amount,clipsize_amount)
+		fc1.get_node("ClipArea").scale = Vector2(clipsize_amount,clipsize_amount)
 		
 		#scales the second false clip
 		fc2.get_node("ClipSprite").scale.x = (fc2.get_node("ClipSprite").scale.x) * clipsize_amount
 		fc2.get_node("ClipSprite").scale.y = (fc2.get_node("ClipSprite").scale.y) * clipsize_amount
 		fc2.get_node("ClipShape").scale = Vector2(clipsize_amount,clipsize_amount)
-		fc2.get_node("Area2D").scale = Vector2(clipsize_amount,clipsize_amount)
+		fc2.get_node("ClipArea").scale = Vector2(clipsize_amount,clipsize_amount)
 	else:
 		#default values
 		clipSpawn.position.x = 150
@@ -309,7 +367,7 @@ func shoot(speed):
 		
 	
 	
-	if ricochet.is_pressed():
+	if ricocheter:
 		c.collisionCount =0
 		fc1.collisionCount =0
 		fc2.collisionCount =0
@@ -323,7 +381,7 @@ func shoot(speed):
 	c.spawnPos = clipSpawn.global_position
 	
 	
-	if falseclips.is_pressed():
+	if false_clipper:
 		fc1.global_transform = falseClipSpawn1.get_global_transform() 
 		fc1.spawnRot = falseClipSpawn1.global_rotation
 		fc1.spawnPos = falseClipSpawn1.global_position
@@ -334,9 +392,9 @@ func shoot(speed):
 	else:
 		fc1.queue_free()
 		fc2.queue_free()
-	
+
 # Collisions
-func _on_area_2d_area_entered(area):
-	kill()
 
-
+func _on_player_2_area_area_entered(area):
+	if area.name.to_lower() == "cliparea":
+		kill()
