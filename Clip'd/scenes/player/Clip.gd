@@ -43,5 +43,5 @@ func _on_clip_area_area_entered(area):
 			queue_free()
 			Global.p1inventory +=1
 		elif area.name.to_lower() == "player2area":
-			queue_redraw()
+			queue_free()
 			Global.p2inventory +=1

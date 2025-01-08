@@ -2,16 +2,16 @@ extends CharacterBody2D
 
 
 #Movement Variables (The constant ones, which are used for reverting back to original)
-const init_max_speed := 250.0
-const init_acceleration := 100.0
+const init_max_speed := 600.0
+const init_acceleration := 500.0
 const init_deceleration := 200.0
-const init_rotation_speed := 1.5 # degrees per second
+const init_rotation_speed := 5.0 # degrees per second
 
 # Movement variables (the ones that actually get used)
-var max_speed := 450.0
-var acceleration := 300.0
+var max_speed := 500
+var acceleration := 400.0
 var deceleration := 200.0
-var rotation_speed := 2.5 # degrees per second
+var rotation_speed := 4.0 # degrees per second
 var friction := 0.1
 
 var current_speed := 0.0
@@ -86,11 +86,11 @@ var is_alive = true
 
 func kill():
 	is_alive = false
-	print("hit1")
+
 	death()
 	
 func death():
-	$Sprite.visible = false
+	queue_free()
 
 
 func show_cards():

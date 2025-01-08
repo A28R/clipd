@@ -8,10 +8,10 @@ const init_deceleration := 200.0
 const init_rotation_speed := 5.0 # degrees per second
 
 # Movement variables (the ones that actually get used)
-var max_speed := 600.0
-var acceleration := 500.0
+var max_speed := 500
+var acceleration := 400.0
 var deceleration := 200.0
-var rotation_speed := 5.0 # degrees per second
+var rotation_speed := 4.0 # degrees per second
 var friction := 0.1
 
 var current_speed := 0.0
@@ -125,7 +125,6 @@ func show_cards():
 
 func _ready():
 
-	print(get_tree().current_scene.name)
 	if get_tree().current_scene.name.to_lower() == "demo world":
 		accslider.value = acceleration
 		acclabel.text = "Acceleration: "+str(acceleration)
@@ -396,5 +395,5 @@ func shoot(speed):
 # Collisions
 
 func _on_player_2_area_area_entered(area):
-	if area.name.to_lower() == "cliparea":
+	if area.name.to_lower() == "cliparea" and area.get_parent().deactivated == false:
 		kill()
