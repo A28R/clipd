@@ -102,7 +102,11 @@ func kill():
 	
 func death():
 	queue_free()
+<<<<<<< Updated upstream
 	Global.roundover("Player 1")
+=======
+	Global.gameover("Player 1")
+>>>>>>> Stashed changes
 	
 
 func add_card(chosen_card: String):
@@ -180,12 +184,16 @@ func show_cards():
 	get_node("/root").add_child(new_card2)
 	var new_card3 = CardBase.instantiate()
 	new_card3.CardName = random_card_name3
+<<<<<<< Updated upstream
 
 	get_node("/root").add_child(new_card3)
 	
 
 	print("about to place cards")
 
+=======
+	print("about to place cards")
+>>>>>>> Stashed changes
 	# Placing of the cards on the Screen
 	# THIS NEEDS TO BE CHANGED
 	new_card1.position.x = 100
