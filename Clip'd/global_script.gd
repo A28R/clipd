@@ -11,9 +11,14 @@ var lastRoundWinner = ""
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 var lastArenaIndex = -1
 
 func roundover(winner):
+=======
+
+func gameover(winner):
+>>>>>>> Stashed changes
 =======
 
 func gameover(winner):
@@ -44,6 +49,7 @@ func gameover(winner):
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 
 func gameover(winner):
 	if winner == "Player 1":
@@ -54,6 +60,8 @@ func gameover(winner):
 	get_tree().change_scene_to_file("res://scenes/ui/game_over.tscn")
 	p1inventory = 3
 	p2inventory = 3
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 =======
