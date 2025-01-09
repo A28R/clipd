@@ -8,10 +8,10 @@ const init_deceleration := 200.0
 const init_rotation_speed := 5.0 # degrees per second
 
 # Movement variables (the ones that actually get used)
-var max_speed := 500
-var acceleration := 400.0
-var deceleration := 200.0
-var rotation_speed := 4.0 # degrees per second
+var max_speed := 150
+var acceleration := 80.0
+var deceleration := 100.0
+var rotation_speed := 3 # degrees per second
 var friction := 0.1
 
 var current_speed := 0.0
@@ -38,7 +38,8 @@ var clipfaster = false
 
 
 # Clip movement
-var clip_speed := 1000
+var default_clip_scale = 0.25
+var clip_speed := 500
 
 @export var Clip : PackedScene = preload('res://scenes/player/clip.tscn')
 @export var FakeClip : PackedScene = preload('res://scenes/player/fake_clip.tscn')
@@ -86,7 +87,7 @@ var is_alive = true
 
 func kill():
 	is_alive = false
-
+	print("hit1")
 	death()
 	
 func death():
@@ -333,11 +334,11 @@ func shoot(speed):
 	if clipsizer:
 		
 		#adjusts the clip spawns so they don't collide if the clips are enlarged
-		clipSpawn.position.x = 180
-		falseClipSpawn1.position.x = 180
-		falseClipSpawn1.position.y = 80
-		falseClipSpawn2.position.x = 180
-		falseClipSpawn2.position.y = -80
+		clipSpawn.position.x = 50
+		falseClipSpawn1.position.x = 50
+		falseClipSpawn1.position.y = 18
+		falseClipSpawn2.position.x = 50
+		falseClipSpawn2.position.y = -18
 		
 		
 		#scales the actual clip
@@ -359,11 +360,11 @@ func shoot(speed):
 		fc2.get_node("ClipArea").scale = Vector2(clipsize_amount,clipsize_amount)
 	else:
 		#default values
-		clipSpawn.position.x = 150
-		falseClipSpawn1.position.x = 150
-		falseClipSpawn1.position.y = 60
-		falseClipSpawn2.position.x = 150
-		falseClipSpawn2.position.y = -60
+		clipSpawn.position.x = 40
+		falseClipSpawn1.position.x = 40
+		falseClipSpawn1.position.y = 16
+		falseClipSpawn2.position.x = 40
+		falseClipSpawn2.position.y = -16
 		
 	
 	
@@ -377,6 +378,7 @@ func shoot(speed):
 		fc2.collisionCount =1
 
 	c.global_transform = clipSpawn.get_global_transform()
+	c.scale = Vector2(default_clip_scale,default_clip_scale)
 	c.spawnRot = global_rotation
 	c.spawnPos = clipSpawn.global_position
 	
@@ -397,4 +399,5 @@ func shoot(speed):
 func _on_player_1_area_area_entered(area):
 	if area.name.to_lower() == "cliparea" and area.get_parent().deactivated == false:
 		kill()
+		area.get_parent().queue_free()
 

@@ -10,7 +10,7 @@ size = Vector2(63, 32)
 size = Vector2(71, 35)
 
 [node name="Clip" type="CharacterBody2D"]
-scale = Vector2(1.2, 1.2)
+scale = Vector2(0.125, 0.125)
 script = ExtResource("1_w0rbx")
 metadata/_edit_group_ = true
 

@@ -35,15 +35,45 @@ text = "Clip'd"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Play" type="Button" parent="Control/MarginContainer/VBoxContainer"]
+[node name="Sample" type="Button" parent="Control/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-text = "Play"
+text = "Play Sample"
+
+[node name="Brackets" type="Button" parent="Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Play Brackets"
+
+[node name="Corners" type="Button" parent="Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Play Corners"
+
+[node name="Mountains" type="Button" parent="Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Play Mountains"
+
+[node name="Storage" type="Button" parent="Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Play Storage"
+
+[node name="Trenches" type="Button" parent="Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Play Trenches"
 
 [node name="Demo" type="Button" parent="Control/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 text = "Demo Scene"
 
-[connection signal="pressed" from="Control/MarginContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Control/MarginContainer/VBoxContainer/Sample" to="." method="_on_sample_pressed"]
+[connection signal="pressed" from="Control/MarginContainer/VBoxContainer/Brackets" to="." method="_on_brackets_pressed"]
+[connection signal="pressed" from="Control/MarginContainer/VBoxContainer/Corners" to="." method="_on_corners_pressed"]
+[connection signal="pressed" from="Control/MarginContainer/VBoxContainer/Mountains" to="." method="_on_mountains_pressed"]
+[connection signal="pressed" from="Control/MarginContainer/VBoxContainer/Storage" to="." method="_on_storage_pressed"]
+[connection signal="pressed" from="Control/MarginContainer/VBoxContainer/Trenches" to="." method="_on_trenches_pressed"]
 [connection signal="pressed" from="Control/MarginContainer/VBoxContainer/Demo" to="." method="_on_demo_pressed"]
