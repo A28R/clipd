@@ -28,7 +28,10 @@ layout_mode = 2
 
 [node name="Arena Title" type="Label" parent="Control/MarginContainer/VBoxContainer"]
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 visible = false
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 layout_mode = 2
