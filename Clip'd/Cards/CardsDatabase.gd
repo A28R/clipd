@@ -20,4 +20,4 @@ const DATA = {
 		["Opp", "Sustained", 0, -1, 0, 0, 0, 0, 0],
 	Misfire :
 		["Opp", "Sustained", 0, 0, 0, 0, 0, 0, 20],
-	}
+}

@@ -77,6 +77,7 @@ var clip_speed := 500
 # Card/Deck variables
 const CardBase = preload("res://CardBase.tscn")
 const CardDatabase = preload("res://Cards/CardsDatabase.gd")
+const card_names = ["Smaller", "Faster", "Magnet", "Ricochet", "ClipLarger", "ClipFaster", "Larger", "Slower", "Misfire"]
 var deck = []
 
 # Other Player variables
@@ -103,6 +104,7 @@ func death():
 	queue_free()
 
 func add_card(chosen_card: String):
+	deck.append(chosen_card)
 	var chosen_card_data = CardDatabase.DATA[chosen_card]
 	if chosen_card_data[0] == "Self":
 		if chosen_card_data[2] != 0:
@@ -158,8 +160,6 @@ func add_card(chosen_card: String):
 			pass
 
 func show_cards():
-	var card_names = CardDatabase.DATA.keys()
-	
 	# Choosing random cards to show
 	var random_card_name1 = card_names[randi() % card_names.size()]
 	var random_card_name2 = card_names[randi() % card_names.size()]
@@ -172,17 +172,23 @@ func show_cards():
 	# Creating CardBase instances of the chosen random cards
 	var new_card1 = CardBase.instantiate()
 	new_card1.CardName = random_card_name1
+	get_node("/root").add_child(new_card1)
 	var new_card2 = CardBase.instantiate()
 	new_card2.CardName = random_card_name2
+	get_node("/root").add_child(new_card2)
 	var new_card3 = CardBase.instantiate()
 	new_card3.CardName = random_card_name3
+	get_node("/root").add_child(new_card3)
 	
 	# Placing of the cards on the Screen
 	# THIS NEEDS TO BE CHANGED
-	new_card1.position = get_global_mouse_position()
-	new_card2.position = get_global_mouse_position()
+	new_card1.position.x = 100
+	new_card1.position.y = 200
+	new_card2.position.x = 100
+	new_card2.position.y = 200
 	new_card2.position.x += 250
-	new_card3.position = get_global_mouse_position()
+	new_card3.position.x = 100
+	new_card3.position.y = 200
 	new_card3.position.x += 500
 
 
