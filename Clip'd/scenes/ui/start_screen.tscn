@@ -35,11 +35,6 @@ text = "Clip'd"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Sample" type="Button" parent="Control/MarginContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-text = "Play Sample"
-
 [node name="Brackets" type="Button" parent="Control/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
@@ -70,7 +65,6 @@ layout_mode = 2
 size_flags_vertical = 3
 text = "Demo Scene"
 
-[connection signal="pressed" from="Control/MarginContainer/VBoxContainer/Sample" to="." method="_on_sample_pressed"]
 [connection signal="pressed" from="Control/MarginContainer/VBoxContainer/Brackets" to="." method="_on_brackets_pressed"]
 [connection signal="pressed" from="Control/MarginContainer/VBoxContainer/Corners" to="." method="_on_corners_pressed"]
 [connection signal="pressed" from="Control/MarginContainer/VBoxContainer/Mountains" to="." method="_on_mountains_pressed"]

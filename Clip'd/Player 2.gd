@@ -11,7 +11,7 @@ const init_rotation_speed := 5.0 # degrees per second
 var max_speed := 150
 var acceleration := 80.0
 var deceleration := 100.0
-var rotation_speed := 3 # degrees per second
+var rotation_speed := 6 # degrees per second
 var friction := 0.1
 
 var current_speed := 0.0
@@ -102,6 +102,8 @@ func kill():
 	
 func death():
 	queue_free()
+	Global.roundover("Player 1")
+	
 
 func add_card(chosen_card: String):
 	deck.append(chosen_card)
@@ -178,8 +180,12 @@ func show_cards():
 	get_node("/root").add_child(new_card2)
 	var new_card3 = CardBase.instantiate()
 	new_card3.CardName = random_card_name3
+
 	get_node("/root").add_child(new_card3)
 	
+
+	print("about to place cards")
+
 	# Placing of the cards on the Screen
 	# THIS NEEDS TO BE CHANGED
 	new_card1.position.x = 100
@@ -190,11 +196,17 @@ func show_cards():
 	new_card3.position.x = 100
 	new_card3.position.y = 200
 	new_card3.position.x += 500
+	
+	
+	print("placed cards")
+	get_node("/root").add_child(new_card1)
+	get_node("/root").add_child(new_card2)
+	get_node("/root").add_child(new_card3)
 
 
 
 func _ready():
-
+	
 	if get_tree().current_scene.name.to_lower() == "demo world":
 		accslider.value = acceleration
 		acclabel.text = "Acceleration: "+str(acceleration)
@@ -212,9 +224,17 @@ func _ready():
 		
 		clsslider.value = clip_speed
 		clipSpeedlabel.text = "Clip Speed: "+str(clip_speed)
-
+	
 
 func _physics_process(delta):
+	$Sprite/AnimationPlayer.speed_scale = 0.6 + ((current_speed/max_speed)*0.5)
+
+	if stopped == false:
+		$Sprite/AnimationPlayer.play("Walking")
+	else:
+		$Sprite/AnimationPlayer.stop()
+	
+	
 	var isDemo = get_tree().current_scene.name.to_lower() == "demo world"
 	
 	if isDemo == true:

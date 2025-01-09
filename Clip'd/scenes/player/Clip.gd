@@ -8,7 +8,8 @@ var ricochet = false
 var collisionCount = 0
 var scaleNum = 1
 var deactivated = false
-
+var closedclip = load("res://assets/Objects/clip1.png")
+var openclip = load("res://assets/Objects/clip2.png")
 
 func _ready():
 	scale.x = scaleNum
@@ -19,6 +20,10 @@ func _ready():
 
 
 func _physics_process(delta):
+	if velocity == Vector2.ZERO:
+		$ClipSprite.texture = closedclip
+	else:
+		$ClipSprite.texture = openclip
 	if deactivated == false:
 		var collision = move_and_collide(velocity*delta)
 		

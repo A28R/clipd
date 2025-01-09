@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cp4g7j6otc4l8"]
 
 [ext_resource type="Script" path="res://scenes/player/fake_clip.gd" id="1_1vvka"]
-[ext_resource type="Texture2D" uid="uid://dmhanxyne8bm4" path="res://icon.svg" id="2_b8e5v"]
+[ext_resource type="Texture2D" uid="uid://borbjyk5xe07i" path="res://assets/Objects/clip1.png" id="2_o7mba"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_koop5"]
 size = Vector2(63, 32)
@@ -19,8 +19,8 @@ shape = SubResource("RectangleShape2D_koop5")
 
 [node name="ClipSprite" type="Sprite2D" parent="."]
 rotation = 1.5708
-scale = Vector2(0.25, 0.5)
-texture = ExtResource("2_b8e5v")
+scale = Vector2(4, 4)
+texture = ExtResource("2_o7mba")
 
 [node name="Area2D" type="Area2D" parent="."]
 

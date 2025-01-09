@@ -11,7 +11,7 @@ const init_rotation_speed := 5.0 # degrees per second
 var max_speed := 150
 var acceleration := 80.0
 var deceleration := 100.0
-var rotation_speed := 3 # degrees per second
+var rotation_speed := 5 # degrees per second
 var friction := 0.1
 
 var current_speed := 0.0
@@ -102,6 +102,7 @@ func kill():
 	
 func death():
 	queue_free()
+	Global.roundover("Player 2")
 
 func add_card(chosen_card: String):
 	deck.append(chosen_card)
@@ -194,8 +195,8 @@ func show_cards():
 
 
 func _ready():
+	$Sprite/AnimationPlayer.speed_scale = 1.25
 
-	print(get_tree().current_scene.name)
 	if get_tree().current_scene.name.to_lower() == "demo world":
 		accslider.value = acceleration
 		acclabel.text = "Acceleration: "+str(acceleration)
@@ -216,6 +217,14 @@ func _ready():
 		
 
 func _physics_process(delta):
+	$Sprite/AnimationPlayer.speed_scale = 0.8 + ((current_speed/max_speed)*0.7)
+
+	
+	if stopped == false:
+		$Sprite/AnimationPlayer.play("Walking")
+	else:
+		$Sprite/AnimationPlayer.stop()
+	
 	var isDemo = get_tree().current_scene.name.to_lower() == "demo world"
 	
 	if isDemo == true:
