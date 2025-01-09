@@ -104,7 +104,11 @@ func death():
 	queue_free()
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 	Global.roundover("Player 2")
+=======
+	Global.gameover("Player 2")
+>>>>>>> Stashed changes
 =======
 	Global.gameover("Player 2")
 >>>>>>> Stashed changes
