@@ -160,6 +160,58 @@ func add_card(chosen_card: String):
 		if chosen_card_data[8] != 0:
 			pass
 
+func clear_deck():
+	for i in range(deck.size() - 1, -1, -1):
+		if deck[i] == CardDatabase.DATA[0]:
+			# Sets new player model size and and counters offset position from that
+			var previous_model_size = player_model.rect_size
+			player_model.scale = Vector2((4/3), (4/3))
+			var new_model_size = player_model.rect_size
+			player_model.position -= (new_model_size - previous_model_size) / 2
+			# Applies new size and position to sprite node
+			get_node("Sprite").scale = player_model.scale
+			get_node("Sprite").position = player_model.position
+			
+			# Sets new player hitbox size and and counters offset position from that
+			var previous_hitbox_size = player_hitbox.shape.extents
+			player_hitbox.shape.extents /= 0.75
+			var new_hitbox_size = player_hitbox.shape.extents
+			player_hitbox.position -= (new_hitbox_size - previous_hitbox_size) / 2
+			# Applies new size and position to collision shape node
+			get_node("CollisionShape2D2").scale = player_hitbox.scale
+			get_node("CollisionShape2D2").position = player_hitbox.position
+		elif deck[i] == CardDatabase.DATA[1]:
+			max_speed /= faster_amount
+		elif deck[i] == CardDatabase.DATA[2]:
+			pass
+		elif deck[i] == CardDatabase.DATA[4]:
+			clipsize_amount /= larger_amount
+		elif deck[i] == CardDatabase.DATA[5]:
+			clip_speed /= clipfaster_amount
+		elif deck[i] == CardDatabase.DATA[6]:
+			# Sets new player model size and and counters offset position from that
+			var previous_model_size_2 = player_model_2.rect_size
+			player_model_2.scale = Vector2((2/3), (2/3))
+			var new_model_size_2 = player_model_2.rect_size
+			player_model_2.position -= (new_model_size_2 - previous_model_size_2) / 2
+			# Applies new size and position to sprite node
+			get_node("/root/player_2/Sprite").scale = player_model_2.scale
+			get_node("/root/player_2/Sprite").position = player_model_2.position
+			
+			# Sets new player hitbox size and and counters offset position from that
+			var previous_hitbox_size_2 = player_hitbox_2.shape.extents
+			player_hitbox_2.shape.extents /= 1.5
+			var new_hitbox_size_2 = player_hitbox_2.shape.extents
+			player_hitbox_2.position -= (new_hitbox_size_2 - previous_hitbox_size_2) / 2
+			# Applies new size and position to collision shape node
+			get_node("/root/player_2/Player2Area/CollisionShape2D2").scale = player_hitbox_2.scale
+			get_node("/root/player_2/Player2Area/CollisionShape2D2").position = player_hitbox_2.position
+		elif deck[i] == CardDatabase.DATA[7]:
+			get_node("/root/demo_world/Demo World/Player 2").max_speed /= slower_amount
+		elif deck[i] == CardDatabase.DATA[8]:
+			pass
+		deck.remove_at(i)
+
 func show_cards():
 	# Choosing random cards to show
 	var random_card_name1 = card_names[randi() % card_names.size()]
@@ -191,7 +243,6 @@ func show_cards():
 	new_card3.position.x = 100
 	new_card3.position.y = 200
 	new_card3.position.x += 500
-
 
 
 func _ready():
@@ -447,11 +498,16 @@ func shoot(speed):
 	# Adds bounces to the clip for every one of the Ricochet cards in deck
 	# PLEASE CHECK THIS CODE
 	for i in deck:
-		if deck[i] == "Ricochet":
+		var r_count = 0
+		if deck[i] == CardDatabase.DATA[3]:
+			r_count += 1
 			c.collisionCount -= 1
 			fc1.collisionCount -= 1
 			fc2.collisionCount -= 1
-	
+		if r_count == 0:
+			c.collisionCount =1
+			fc1.collisionCount =1
+			fc2.collisionCount =1
 	if ricocheter:
 		c.collisionCount =0
 		fc1.collisionCount =0
