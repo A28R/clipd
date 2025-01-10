@@ -28,6 +28,7 @@ func _physics_process(delta):
 		var collision = move_and_collide(velocity*delta)
 		
 		if collision:
+			$Twang.play()
 			if collisionCount ==1:
 				rotation = velocity.angle() + (2*PI)
 				velocity = Vector2.ZERO
@@ -45,8 +46,12 @@ func _physics_process(delta):
 func _on_clip_area_area_entered(area):
 	if deactivated == true:
 		if area.name.to_lower() == "player1area":
+			$ItemPickupPop.play()
+			await get_tree().create_timer(0.07).timeout
 			queue_free()
 			Global.p1inventory +=1
 		elif area.name.to_lower() == "player2area":
+			$ItemPickupPop.play()
+			await get_tree().create_timer(0.07).timeout
 			queue_free()
 			Global.p2inventory +=1

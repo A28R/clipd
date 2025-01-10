@@ -11,7 +11,7 @@ const init_rotation_speed := 5.0 # degrees per second
 var max_speed := 150
 var acceleration := 80.0
 var deceleration := 100.0
-var rotation_speed := 6 # degrees per second
+var rotation_speed := 5 # degrees per second
 var friction := 0.1
 
 var current_speed := 0.0

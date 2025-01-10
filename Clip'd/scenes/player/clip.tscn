@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://cednbypo0lsue"]
+[gd_scene load_steps=7 format=3 uid="uid://cednbypo0lsue"]
 
 [ext_resource type="Script" path="res://scenes/player/Clip.gd" id="1_w0rbx"]
 [ext_resource type="Texture2D" uid="uid://borbjyk5xe07i" path="res://assets/Objects/clip1.png" id="2_udo60"]
+[ext_resource type="AudioStream" uid="uid://dmrr47s0r1mp8" path="res://assets/Sounds/arrowtwang4.mp3" id="3_fqpqq"]
+[ext_resource type="AudioStream" uid="uid://de8whrkom0we2" path="res://assets/Sounds/itempickuppop.wav" id="4_t5eco"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rxy0b"]
 size = Vector2(63, 32)
@@ -27,5 +29,13 @@ texture = ExtResource("2_udo60")
 [node name="ClipShape" type="CollisionShape2D" parent="ClipArea"]
 position = Vector2(0.5, -3)
 shape = SubResource("RectangleShape2D_gat4s")
+
+[node name="Twang" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_fqpqq")
+volume_db = -5.0
+pitch_scale = 2.0
+
+[node name="ItemPickupPop" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_t5eco")
 
 [connection signal="area_entered" from="ClipArea" to="." method="_on_clip_area_area_entered"]

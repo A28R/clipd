@@ -1,13 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://cc3myrayi85xa"]
+[gd_scene load_steps=4 format=3 uid="uid://b7mkwwafk3jj"]
 
-[ext_resource type="Script" path="res://scenes/ui/game_over.gd" id="1_r5yp6"]
-[ext_resource type="Script" path="res://scenes/ui/Winner.gd" id="2_7v28e"]
+[ext_resource type="Script" path="res://scenes/ui/match_over.gd" id="1_50fuh"]
+[ext_resource type="Script" path="res://scenes/ui/MatchWinner.gd" id="1_b5e4n"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a5ubj"]
-bg_color = Color(0.945098, 0.317647, 0.713726, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pu01f"]
+bg_color = Color(0.333333, 0.701961, 0.117647, 1)
 
-[node name="GameOver" type="CanvasLayer"]
-script = ExtResource("1_r5yp6")
+[node name="MatchOver" type="CanvasLayer"]
+script = ExtResource("1_50fuh")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -24,7 +24,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_a5ubj")
+theme_override_styles/panel = SubResource("StyleBoxFlat_pu01f")
 
 [node name="MarginContainer" type="MarginContainer" parent="Control/PanelContainer"]
 layout_mode = 2
@@ -39,17 +39,17 @@ layout_mode = 2
 [node name="Label" type="Label" parent="Control/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 160
-text = "GAME OVER"
+text = "Match Over"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Winner" type="Label" parent="Control/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="MatchWinner" type="Label" parent="Control/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 96
-text = "Player 2 Won"
+text = "Player 2 Won the game"
 horizontal_alignment = 1
 vertical_alignment = 1
-script = ExtResource("2_7v28e")
+script = ExtResource("1_b5e4n")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2

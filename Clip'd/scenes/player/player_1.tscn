@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://c7uojemqm3py"]
+[gd_scene load_steps=10 format=3 uid="uid://c7uojemqm3py"]
 
 [ext_resource type="Script" path="res://scenes/player/Player 1.gd" id="1_q6ebd"]
 [ext_resource type="Texture2D" uid="uid://dmhanxyne8bm4" path="res://icon.svg" id="2_v6vbe"]
 [ext_resource type="Texture2D" uid="uid://cexmeqt468c0d" path="res://assets/Players/coloradoblue.png" id="3_og50f"]
+[ext_resource type="AudioStream" uid="uid://bu1tdhlbwvlto" path="res://assets/Sounds/playerhit.mp3" id="4_dq7c3"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8xvbw"]
 radius = 9.0
@@ -11,6 +12,21 @@ height = 26.0
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_x2tde"]
 radius = 17.0
 height = 46.0
+
+[sub_resource type="Animation" id="Animation_25vpg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1.25, 1.25)]
+}
 
 [sub_resource type="Animation" id="Animation_un64d"]
 resource_name = "Walking"
@@ -27,21 +43,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector2(1.25, 1.25), Vector2(1.18, 1.18), Vector2(1.25, 1.25)]
-}
-
-[sub_resource type="Animation" id="Animation_25vpg"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1.25, 1.25)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_bg7fy"]
@@ -91,5 +92,8 @@ autoplay = "Walking"
 libraries = {
 "": SubResource("AnimationLibrary_bg7fy")
 }
+
+[node name="PlayerHit" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_dq7c3")
 
 [connection signal="area_entered" from="Player1Area" to="." method="_on_player_1_area_area_entered"]
