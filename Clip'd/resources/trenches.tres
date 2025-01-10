@@ -1,7 +1,9 @@
-[gd_resource type="TileSet" load_steps=6 format=3 uid="uid://bmndssnx0d0wn"]
+[gd_resource type="TileSet" load_steps=14 format=3 uid="uid://bmndssnx0d0wn"]
 
 [ext_resource type="Texture2D" uid="uid://c53nr2is0ihl3" path="res://assets/Tiles/boxtile_v1.png" id="1_kp83o"]
 [ext_resource type="Texture2D" uid="uid://ddb2rhg1xigvh" path="res://assets/Tiles/sandtile_v1.png" id="2_nq0gu"]
+[ext_resource type="Texture2D" uid="uid://bj5jdspqj7s1n" path="res://assets/Tiles/boxtile_v2.png" id="3_s0nyi"]
+[ext_resource type="Texture2D" uid="uid://cnu5wg860g6vg" path="res://assets/Tiles/woord.png" id="4_0vyk4"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_bnoca"]
 polygon = PackedVector2Array(-16, -16, -16, 16, 16, 16, 16, -16)
@@ -22,9 +24,51 @@ texture_region_size = Vector2i(32, 32)
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_0/angular_velocity = 0.0
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_jhmec"]
+polygon = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2i2sp"]
+texture = ExtResource("3_s0nyi")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/modulate = Color(0.454902, 0.454902, 0.454902, 1)
+0:0/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_jhmec")
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_yveka"]
+polygon = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pfti5"]
+texture = ExtResource("2_nq0gu")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/modulate = Color(0.45098, 0.45098, 0.45098, 1)
+0:0/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_yveka")
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_ovsc0"]
+polygon = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4m4t2"]
+texture = ExtResource("4_0vyk4")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/modulate = Color(0.72549, 0.72549, 0.72549, 1)
+0:0/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_ovsc0")
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+
 [resource]
 tile_size = Vector2i(32, 32)
 occlusion_layer_0/light_mask = 1
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_ye7jd")
 sources/1 = SubResource("TileSetAtlasSource_r7xyo")
+sources/2 = SubResource("TileSetAtlasSource_2i2sp")
+sources/3 = SubResource("TileSetAtlasSource_pfti5")
+sources/4 = SubResource("TileSetAtlasSource_4m4t2")
