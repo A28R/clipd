@@ -251,7 +251,6 @@ func show_cards():
 
 
 func _ready():
-	show_cards()
 	$Sprite/AnimationPlayer.speed_scale = 1.25
 
 	if get_tree().current_scene.name.to_lower() == "demo world":
