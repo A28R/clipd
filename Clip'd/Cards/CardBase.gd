@@ -16,6 +16,10 @@ func _ready():
 	$Card.texture = load(CardImg)
 	$Card.scale *= CardSize/$Card.texture.get_size()
 	$Bars/Bar/Name/CenterContainer/Label.text = CardName
+	self.position = get_viewport_rect().size/2
+	self.position.x -= self.size.x/2
+	self.position.y -= self.size.y/2
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

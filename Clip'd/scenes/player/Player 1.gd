@@ -235,17 +235,23 @@ func show_cards():
 	
 	# Placing of the cards on the Screen
 	# THIS NEEDS TO BE CHANGED
-	new_card1.position.x = 100
-	new_card1.position.y = 200
-	new_card2.position.x = 100
-	new_card2.position.y = 200
-	new_card2.position.x += 250
-	new_card3.position.x = 100
-	new_card3.position.y = 200
-	new_card3.position.x += 500
+	new_card1.scale = Vector2(0.35, 0.35)
+	new_card1.position.x = 175
+	new_card1.position.y = 0
+	new_card1.position.x -= 100
+	
+	new_card2.scale = Vector2(0.35, 0.35)
+	new_card2.position.x = 175
+	new_card2.position.y = 0
+	
+	new_card3.scale = Vector2(0.35, 0.35)
+	new_card3.position.x = 175
+	new_card3.position.y = 0
+	new_card3.position.x += 100
 
 
 func _ready():
+	show_cards()
 	$Sprite/AnimationPlayer.speed_scale = 1.25
 
 	if get_tree().current_scene.name.to_lower() == "demo world":
