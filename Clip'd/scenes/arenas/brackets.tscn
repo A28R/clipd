@@ -1,12 +1,23 @@
-[gd_scene load_steps=6 format=3 uid="uid://b8vmc2bu66snq"]
+[gd_scene load_steps=14 format=3 uid="uid://b8vmc2bu66snq"]
 
+[ext_resource type="Script" path="res://scenes/arenas/arenamanager.gd" id="1_5o6xu"]
 [ext_resource type="PackedScene" uid="uid://dtm2npqxofif0" path="res://scenes/player/player_2.tscn" id="1_nid62"]
 [ext_resource type="Texture2D" uid="uid://dmhanxyne8bm4" path="res://icon.svg" id="2_v317c"]
 [ext_resource type="PackedScene" uid="uid://s2vngre6v4fh" path="res://scenes/ui/game_ui.tscn" id="3_bxaew"]
 [ext_resource type="TileSet" uid="uid://bmndssnx0d0wn" path="res://resources/trenches.tres" id="3_oxwil"]
+[ext_resource type="Environment" uid="uid://jpgngsjg5r6e" path="res://scenes/arenas/postprocessing.tres" id="6_1rlti"]
 [ext_resource type="PackedScene" uid="uid://c7uojemqm3py" path="res://scenes/player/player_1.tscn" id="6_wn2m5"]
+[ext_resource type="Texture2D" uid="uid://2j6y68fe6hib" path="res://assets/UI/Signs/ui_signs_small4.png" id="8_cfgo1"]
+[ext_resource type="Texture2D" uid="uid://cppkqhqenwk5e" path="res://assets/UI/Signs/ui_signs_small3.png" id="9_lj8pe"]
+[ext_resource type="Texture2D" uid="uid://0c14xknfrgd8" path="res://assets/UI/Signs/ui_signs_small2.png" id="10_pphso"]
+[ext_resource type="Texture2D" uid="uid://dwd86wort68y6" path="res://assets/UI/Signs/ui_signs_small1.png" id="11_bhvsm"]
+[ext_resource type="AudioStream" uid="uid://cd6jg5ai6c6sg" path="res://assets/Sounds/Clip'd Title Screen.wav" id="12_b77xd"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xaxn8"]
+bg_color = Color(0, 0, 0, 0.654902)
 
 [node name="Brackets" type="Node2D"]
+script = ExtResource("1_5o6xu")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 position = Vector2(1088, -1080)
@@ -35,3 +46,53 @@ rotation = -3.14159
 [node name="Camera" type="Camera2D" parent="."]
 position = Vector2(288, 176)
 zoom = Vector2(2.32, 2.32)
+
+[node name="Shaders" type="WorldEnvironment" parent="."]
+environment = ExtResource("6_1rlti")
+
+[node name="321" type="CanvasLayer" parent="."]
+
+[node name="PanelContainer" type="PanelContainer" parent="321"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_xaxn8")
+
+[node name="CenterContainer" type="CenterContainer" parent="321/PanelContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="321/PanelContainer/CenterContainer"]
+visible = false
+custom_minimum_size = Vector2(320, 320)
+layout_mode = 2
+texture = ExtResource("8_cfgo1")
+stretch_mode = 5
+
+[node name="TextureRect2" type="TextureRect" parent="321/PanelContainer/CenterContainer"]
+visible = false
+custom_minimum_size = Vector2(320, 320)
+layout_mode = 2
+texture = ExtResource("9_lj8pe")
+stretch_mode = 5
+
+[node name="TextureRect3" type="TextureRect" parent="321/PanelContainer/CenterContainer"]
+visible = false
+custom_minimum_size = Vector2(320, 320)
+layout_mode = 2
+texture = ExtResource("10_pphso")
+stretch_mode = 5
+
+[node name="TextureRect4" type="TextureRect" parent="321/PanelContainer/CenterContainer"]
+visible = false
+custom_minimum_size = Vector2(320, 320)
+layout_mode = 2
+texture = ExtResource("11_bhvsm")
+stretch_mode = 5
+
+[node name="Music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("12_b77xd")
+volume_db = 20.0
+pitch_scale = 1.3
+autoplay = true

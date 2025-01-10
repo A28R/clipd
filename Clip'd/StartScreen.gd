@@ -1,6 +1,13 @@
 extends CanvasLayer
 
 
+var arenas = [
+	"res://scenes/arenas/brackets.tscn",
+	"res://scenes/arenas/corners.tscn",
+	"res://scenes/arenas/mountains.tscn",
+	"res://scenes/arenas/storage.tscn",
+	"res://scenes/arenas/trenches.tscn"
+]
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -29,3 +36,19 @@ func _on_storage_pressed():
 
 func _on_trenches_pressed():
 	get_tree().change_scene_to_file("res://scenes/arenas/trenches.tscn")
+
+
+
+func _on_title_5_pressed():
+	var randNum = randi_range(0,4)
+	get_tree().change_scene_to_file(arenas[randNum])
+
+
+func _on_okay_pressed():
+	$ControlsPopup.visible = false
+
+
+
+func _on_controls_pressed():
+	$ControlsPopup.visible = true
+

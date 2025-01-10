@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://s2vngre6v4fh"]
 
-[ext_resource type="Texture2D" uid="uid://b85afm262f2od" path="res://assets/UI/names1.png" id="1_rn74j"]
+[ext_resource type="Texture2D" uid="uid://bl680gytl1tuy" path="res://assets/Players/names1.png" id="1_4d838"]
 [ext_resource type="Theme" uid="uid://cmjvqs4s1a01l" path="res://resources/theme.tres" id="1_vind1"]
 [ext_resource type="Script" path="res://scenes/ui/P1ClipCount.gd" id="2_lsi0f"]
 [ext_resource type="Texture2D" uid="uid://c3e1w2sum7hu5" path="res://assets/UI/red_clipind.png" id="3_fuaa3"]
@@ -8,8 +8,8 @@
 [ext_resource type="Script" path="res://scenes/ui/Arena Title.gd" id="4_pi4wl"]
 [ext_resource type="Texture2D" uid="uid://cg4i2elneo01l" path="res://assets/UI/blue_clipind.png" id="4_xm4ix"]
 [ext_resource type="Texture2D" uid="uid://ggvkakm3hagm" path="res://assets/UI/ui_tally.png" id="5_8kmc2"]
-[ext_resource type="Texture2D" uid="uid://y0irln1wmx4i" path="res://assets/UI/bubble3.png" id="6_565fl"]
 [ext_resource type="Script" path="res://scenes/ui/RoundScore.gd" id="6_lgj7m"]
+[ext_resource type="Texture2D" uid="uid://ckdvnbppbrvy2" path="res://assets/UI/bubble1.png" id="8_pmbbf"]
 
 [node name="GameUI" type="CanvasLayer"]
 
@@ -33,11 +33,11 @@ grow_vertical = 2
 layout_mode = 2
 
 [node name="Arena Title" type="TextureRect" parent="Control/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(800, 200)
+custom_minimum_size = Vector2(800, 110)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
-texture = ExtResource("1_rn74j")
+texture = ExtResource("1_4d838")
 stretch_mode = 5
 script = ExtResource("4_pi4wl")
 
@@ -125,6 +125,7 @@ theme_override_constants/margin_right = 0
 theme_override_constants/margin_bottom = 0
 
 [node name="TextureRect4" type="TextureRect" parent="Control/MarginContainer/VBoxContainer/HBoxContainer/Player1Invent/P1ClipCount/P1ClipCount/MarginContainer4"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 texture = ExtResource("3_fuaa3")
@@ -139,6 +140,7 @@ theme_override_constants/margin_right = 0
 theme_override_constants/margin_bottom = 0
 
 [node name="TextureRect5" type="TextureRect" parent="Control/MarginContainer/VBoxContainer/HBoxContainer/Player1Invent/P1ClipCount/P1ClipCount/MarginContainer5"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 texture = ExtResource("3_fuaa3")
@@ -153,6 +155,7 @@ theme_override_constants/margin_right = 0
 theme_override_constants/margin_bottom = 0
 
 [node name="TextureRect6" type="TextureRect" parent="Control/MarginContainer/VBoxContainer/HBoxContainer/Player1Invent/P1ClipCount/P1ClipCount/MarginContainer6"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 texture = ExtResource("3_fuaa3")
@@ -163,7 +166,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.5
 theme_override_constants/margin_left = 30
-theme_override_constants/margin_top = 34
+theme_override_constants/margin_top = 40
 theme_override_constants/margin_right = 30
 
 [node name="RoundScore" type="TextureRect" parent="Control/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer"]
@@ -182,9 +185,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 109
+theme_override_constants/margin_left = 94
 theme_override_constants/margin_top = 20
-theme_override_constants/margin_right = 109
+theme_override_constants/margin_right = 94
 theme_override_constants/margin_bottom = 20
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/RoundScore/MarginContainer"]
@@ -201,7 +204,7 @@ theme_override_constants/margin_bottom = 11
 [node name="TextureRect" type="TextureRect" parent="Control/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/RoundScore/MarginContainer/HBoxContainer/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-texture = ExtResource("6_565fl")
+texture = ExtResource("8_pmbbf")
 stretch_mode = 5
 
 [node name="MarginContainer2" type="MarginContainer" parent="Control/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/RoundScore/MarginContainer/HBoxContainer"]
@@ -215,7 +218,7 @@ theme_override_constants/margin_bottom = 11
 [node name="TextureRect" type="TextureRect" parent="Control/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/RoundScore/MarginContainer/HBoxContainer/MarginContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
-texture = ExtResource("6_565fl")
+texture = ExtResource("8_pmbbf")
 stretch_mode = 5
 
 [node name="MarginContainer3" type="MarginContainer" parent="Control/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/RoundScore/MarginContainer/HBoxContainer"]
@@ -229,7 +232,7 @@ theme_override_constants/margin_bottom = 11
 [node name="TextureRect" type="TextureRect" parent="Control/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/RoundScore/MarginContainer/HBoxContainer/MarginContainer3"]
 layout_mode = 2
 size_flags_horizontal = 3
-texture = ExtResource("6_565fl")
+texture = ExtResource("8_pmbbf")
 stretch_mode = 5
 
 [node name="MarginContainer4" type="MarginContainer" parent="Control/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/RoundScore/MarginContainer/HBoxContainer"]
@@ -243,7 +246,7 @@ theme_override_constants/margin_bottom = 11
 [node name="TextureRect" type="TextureRect" parent="Control/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/RoundScore/MarginContainer/HBoxContainer/MarginContainer4"]
 layout_mode = 2
 size_flags_horizontal = 3
-texture = ExtResource("6_565fl")
+texture = ExtResource("8_pmbbf")
 stretch_mode = 5
 
 [node name="MarginContainer5" type="MarginContainer" parent="Control/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/RoundScore/MarginContainer/HBoxContainer"]
@@ -257,7 +260,7 @@ theme_override_constants/margin_bottom = 11
 [node name="TextureRect" type="TextureRect" parent="Control/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/RoundScore/MarginContainer/HBoxContainer/MarginContainer5"]
 layout_mode = 2
 size_flags_horizontal = 3
-texture = ExtResource("6_565fl")
+texture = ExtResource("8_pmbbf")
 stretch_mode = 5
 
 [node name="Player2Invent" type="MarginContainer" parent="Control/MarginContainer/VBoxContainer/HBoxContainer"]
@@ -294,6 +297,7 @@ theme_override_constants/margin_right = 0
 theme_override_constants/margin_bottom = 0
 
 [node name="TextureRect6" type="TextureRect" parent="Control/MarginContainer/VBoxContainer/HBoxContainer/Player2Invent/P2ClipCount/P2ClipCount/MarginContainer"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 texture = ExtResource("4_xm4ix")
@@ -308,6 +312,7 @@ theme_override_constants/margin_right = 0
 theme_override_constants/margin_bottom = 0
 
 [node name="TextureRect5" type="TextureRect" parent="Control/MarginContainer/VBoxContainer/HBoxContainer/Player2Invent/P2ClipCount/P2ClipCount/MarginContainer2"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 texture = ExtResource("4_xm4ix")
@@ -322,6 +327,7 @@ theme_override_constants/margin_right = 0
 theme_override_constants/margin_bottom = 0
 
 [node name="TextureRect4" type="TextureRect" parent="Control/MarginContainer/VBoxContainer/HBoxContainer/Player2Invent/P2ClipCount/P2ClipCount/MarginContainer3"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 texture = ExtResource("4_xm4ix")
@@ -368,3 +374,6 @@ layout_mode = 2
 size_flags_horizontal = 3
 texture = ExtResource("4_xm4ix")
 stretch_mode = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/MarginContainer/VBoxContainer"]
+layout_mode = 2

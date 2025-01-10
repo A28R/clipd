@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=14 format=3 uid="uid://bmndssnx0d0wn"]
+[gd_resource type="TileSet" load_steps=16 format=3 uid="uid://bmndssnx0d0wn"]
 
 [ext_resource type="Texture2D" uid="uid://c53nr2is0ihl3" path="res://assets/Tiles/boxtile_v1.png" id="1_kp83o"]
 [ext_resource type="Texture2D" uid="uid://ddb2rhg1xigvh" path="res://assets/Tiles/sandtile_v1.png" id="2_nq0gu"]
@@ -63,6 +63,22 @@ texture_region_size = Vector2i(32, 32)
 0:0/0/physics_layer_0/angular_velocity = 0.0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2bd74"]
+texture = ExtResource("4_0vyk4")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/modulate = Color(0.568627, 0.568627, 0.568627, 1)
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jjnho"]
+texture = ExtResource("3_s0nyi")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/modulate = Color(0.501961, 0.501961, 0.501961, 1)
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+
 [resource]
 tile_size = Vector2i(32, 32)
 occlusion_layer_0/light_mask = 1
@@ -72,3 +88,5 @@ sources/1 = SubResource("TileSetAtlasSource_r7xyo")
 sources/2 = SubResource("TileSetAtlasSource_2i2sp")
 sources/3 = SubResource("TileSetAtlasSource_pfti5")
 sources/4 = SubResource("TileSetAtlasSource_4m4t2")
+sources/5 = SubResource("TileSetAtlasSource_2bd74")
+sources/6 = SubResource("TileSetAtlasSource_jjnho")

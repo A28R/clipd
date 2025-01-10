@@ -543,6 +543,8 @@ func shoot(speed):
 
 func _on_player_1_area_area_entered(area):
 	if area.name.to_lower() == "cliparea" and area.get_parent().deactivated == false:
+		$PlayerHit.play()
+		await get_tree().create_timer(0.1).timeout
 		kill()
 		area.get_parent().queue_free()
 
