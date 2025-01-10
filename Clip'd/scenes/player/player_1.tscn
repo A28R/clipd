@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scenes/player/Player 1.gd" id="1_q6ebd"]
 [ext_resource type="Texture2D" uid="uid://dmhanxyne8bm4" path="res://icon.svg" id="2_v6vbe"]
-[ext_resource type="Texture2D" uid="uid://cexmeqt468c0d" path="res://assets/Players/coloradoblue.png" id="3_og50f"]
+[ext_resource type="Texture2D" uid="uid://iiha5hvt27rs" path="res://assets/Players/texasred.png" id="3_ae45f"]
 [ext_resource type="AudioStream" uid="uid://bu1tdhlbwvlto" path="res://assets/Sounds/playerhit.mp3" id="4_dq7c3"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8xvbw"]
@@ -85,7 +85,7 @@ rotation = -0.261799
 [node name="Sprite" type="Sprite2D" parent="."]
 rotation = 1.5708
 scale = Vector2(1.25, 1.25)
-texture = ExtResource("3_og50f")
+texture = ExtResource("3_ae45f")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite"]
 libraries = {

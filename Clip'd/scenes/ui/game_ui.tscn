@@ -1,9 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://s2vngre6v4fh"]
+[gd_scene load_steps=11 format=3 uid="uid://s2vngre6v4fh"]
 
+[ext_resource type="Texture2D" uid="uid://b85afm262f2od" path="res://assets/UI/names1.png" id="1_rn74j"]
 [ext_resource type="Theme" uid="uid://cmjvqs4s1a01l" path="res://resources/theme.tres" id="1_vind1"]
 [ext_resource type="Script" path="res://scenes/ui/P1ClipCount.gd" id="2_lsi0f"]
+[ext_resource type="Texture2D" uid="uid://c3e1w2sum7hu5" path="res://assets/UI/red_clipind.png" id="3_fuaa3"]
 [ext_resource type="Script" path="res://scenes/ui/P2ClipCount.gd" id="3_vd27p"]
 [ext_resource type="Script" path="res://scenes/ui/Arena Title.gd" id="4_pi4wl"]
+[ext_resource type="Texture2D" uid="uid://cg4i2elneo01l" path="res://assets/UI/blue_clipind.png" id="4_xm4ix"]
+[ext_resource type="Texture2D" uid="uid://ggvkakm3hagm" path="res://assets/UI/ui_tally.png" id="5_8kmc2"]
+[ext_resource type="Texture2D" uid="uid://y0irln1wmx4i" path="res://assets/UI/bubble3.png" id="6_565fl"]
+[ext_resource type="Script" path="res://scenes/ui/RoundScore.gd" id="6_lgj7m"]
 
 [node name="GameUI" type="CanvasLayer"]
 
@@ -26,18 +32,19 @@ grow_vertical = 2
 [node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer"]
 layout_mode = 2
 
-[node name="Arena Title" type="Label" parent="Control/MarginContainer/VBoxContainer"]
-visible = false
+[node name="Arena Title" type="TextureRect" parent="Control/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(800, 200)
 layout_mode = 2
-theme_override_font_sizes/font_size = 64
-text = "Arena Name Here"
-horizontal_alignment = 1
-vertical_alignment = 1
+size_flags_horizontal = 4
+size_flags_vertical = 0
+texture = ExtResource("1_rn74j")
+stretch_mode = 5
 script = ExtResource("4_pi4wl")
 
 [node name="Control" type="Control" parent="Control/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+size_flags_stretch_ratio = 0.76
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -45,26 +52,319 @@ size_flags_vertical = 3
 size_flags_stretch_ratio = 0.2
 alignment = 1
 
-[node name="P1ClipCount" type="Label" parent="Control/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="Player1Invent" type="MarginContainer" parent="Control/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.5
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 64
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 10
+
+[node name="P1ClipCount" type="HBoxContainer" parent="Control/MarginContainer/VBoxContainer/HBoxContainer/Player1Invent"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.3
+alignment = 1
+
+[node name="P1ClipCount" type="HBoxContainer" parent="Control/MarginContainer/VBoxContainer/HBoxContainer/Player1Invent/P1ClipCount"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("1_vind1")
-text = "Player 1: 3 Clips"
-horizontal_alignment = 1
-vertical_alignment = 1
 script = ExtResource("2_lsi0f")
 
-[node name="Control" type="Control" parent="Control/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="Control/MarginContainer/VBoxContainer/HBoxContainer/Player1Invent/P1ClipCount/P1ClipCount"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
+
+[node name="TextureRect1" type="TextureRect" parent="Control/MarginContainer/VBoxContainer/HBoxContainer/Player1Invent/P1ClipCount/P1ClipCount/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("3_fuaa3")
+stretch_mode = 4
+
+[node name="MarginContainer2" type="MarginContainer" parent="Control/MarginContainer/VBoxContainer/HBoxContainer/Player1Invent/P1ClipCount/P1ClipCount"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
+
+[node name="TextureRect2" type="TextureRect" parent="Control/MarginContainer/VBoxContainer/HBoxContainer/Player1Invent/P1ClipCount/P1ClipCount/MarginContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("3_fuaa3")
+stretch_mode = 4
+
+[node name="MarginContainer3" type="MarginContainer" parent="Control/MarginContainer/VBoxContainer/HBoxContainer/Player1Invent/P1ClipCount/P1ClipCount"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
+
+[node name="TextureRect3" type="TextureRect" parent="Control/MarginContainer/VBoxContainer/HBoxContainer/Player1Invent/P1ClipCount/P1ClipCount/MarginContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("3_fuaa3")
+stretch_mode = 4
+
+[node name="MarginContainer4" type="MarginContainer" parent="Control/MarginContainer/VBoxContainer/HBoxContainer/Player1Invent/P1ClipCount/P1ClipCount"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
+
+[node name="TextureRect4" type="TextureRect" parent="Control/MarginContainer/VBoxContainer/HBoxContainer/Player1Invent/P1ClipCount/P1ClipCount/MarginContainer4"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("3_fuaa3")
+stretch_mode = 4
+
+[node name="MarginContainer5" type="MarginContainer" parent="Control/MarginContainer/VBoxContainer/HBoxContainer/Player1Invent/P1ClipCount/P1ClipCount"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
+
+[node name="TextureRect5" type="TextureRect" parent="Control/MarginContainer/VBoxContainer/HBoxContainer/Player1Invent/P1ClipCount/P1ClipCount/MarginContainer5"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("3_fuaa3")
+stretch_mode = 4
+
+[node name="MarginContainer6" type="MarginContainer" parent="Control/MarginContainer/VBoxContainer/HBoxContainer/Player1Invent/P1ClipCount/P1ClipCount"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
+
+[node name="TextureRect6" type="TextureRect" parent="Control/MarginContainer/VBoxContainer/HBoxContainer/Player1Invent/P1ClipCount/P1ClipCount/MarginContainer6"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("3_fuaa3")
+stretch_mode = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.5
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 34
+theme_override_constants/margin_right = 30
+
+[node name="RoundScore" type="TextureRect" parent="Control/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.49
 theme = ExtResource("1_vind1")
+texture = ExtResource("5_8kmc2")
+stretch_mode = 5
+script = ExtResource("6_lgj7m")
 
-[node name="P2ClipCount" type="Label" parent="Control/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="Control/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/RoundScore"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 109
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 109
+theme_override_constants/margin_bottom = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/RoundScore/MarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/RoundScore/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 11
+theme_override_constants/margin_top = 11
+theme_override_constants/margin_right = 11
+theme_override_constants/margin_bottom = 11
+
+[node name="TextureRect" type="TextureRect" parent="Control/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/RoundScore/MarginContainer/HBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("6_565fl")
+stretch_mode = 5
+
+[node name="MarginContainer2" type="MarginContainer" parent="Control/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/RoundScore/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 11
+theme_override_constants/margin_top = 11
+theme_override_constants/margin_right = 11
+theme_override_constants/margin_bottom = 11
+
+[node name="TextureRect" type="TextureRect" parent="Control/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/RoundScore/MarginContainer/HBoxContainer/MarginContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("6_565fl")
+stretch_mode = 5
+
+[node name="MarginContainer3" type="MarginContainer" parent="Control/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/RoundScore/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 11
+theme_override_constants/margin_top = 11
+theme_override_constants/margin_right = 11
+theme_override_constants/margin_bottom = 11
+
+[node name="TextureRect" type="TextureRect" parent="Control/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/RoundScore/MarginContainer/HBoxContainer/MarginContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("6_565fl")
+stretch_mode = 5
+
+[node name="MarginContainer4" type="MarginContainer" parent="Control/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/RoundScore/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 11
+theme_override_constants/margin_top = 11
+theme_override_constants/margin_right = 11
+theme_override_constants/margin_bottom = 11
+
+[node name="TextureRect" type="TextureRect" parent="Control/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/RoundScore/MarginContainer/HBoxContainer/MarginContainer4"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("6_565fl")
+stretch_mode = 5
+
+[node name="MarginContainer5" type="MarginContainer" parent="Control/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/RoundScore/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 11
+theme_override_constants/margin_top = 11
+theme_override_constants/margin_right = 11
+theme_override_constants/margin_bottom = 11
+
+[node name="TextureRect" type="TextureRect" parent="Control/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/RoundScore/MarginContainer/HBoxContainer/MarginContainer5"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("6_565fl")
+stretch_mode = 5
+
+[node name="Player2Invent" type="MarginContainer" parent="Control/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.5
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 64
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 10
+
+[node name="P2ClipCount" type="HBoxContainer" parent="Control/MarginContainer/VBoxContainer/HBoxContainer/Player2Invent"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.3
+alignment = 1
+
+[node name="P2ClipCount" type="HBoxContainer" parent="Control/MarginContainer/VBoxContainer/HBoxContainer/Player2Invent/P2ClipCount"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("1_vind1")
-text = "Player 2: 3 Clips"
-horizontal_alignment = 1
-vertical_alignment = 1
 script = ExtResource("3_vd27p")
+
+[node name="ClipPadding" type="MarginContainer" parent="Control/MarginContainer/VBoxContainer/HBoxContainer/Player2Invent/P2ClipCount/P2ClipCount"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/MarginContainer/VBoxContainer/HBoxContainer/Player2Invent/P2ClipCount/P2ClipCount"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
+
+[node name="TextureRect6" type="TextureRect" parent="Control/MarginContainer/VBoxContainer/HBoxContainer/Player2Invent/P2ClipCount/P2ClipCount/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("4_xm4ix")
+stretch_mode = 4
+
+[node name="MarginContainer2" type="MarginContainer" parent="Control/MarginContainer/VBoxContainer/HBoxContainer/Player2Invent/P2ClipCount/P2ClipCount"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
+
+[node name="TextureRect5" type="TextureRect" parent="Control/MarginContainer/VBoxContainer/HBoxContainer/Player2Invent/P2ClipCount/P2ClipCount/MarginContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("4_xm4ix")
+stretch_mode = 4
+
+[node name="MarginContainer3" type="MarginContainer" parent="Control/MarginContainer/VBoxContainer/HBoxContainer/Player2Invent/P2ClipCount/P2ClipCount"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
+
+[node name="TextureRect4" type="TextureRect" parent="Control/MarginContainer/VBoxContainer/HBoxContainer/Player2Invent/P2ClipCount/P2ClipCount/MarginContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("4_xm4ix")
+stretch_mode = 4
+
+[node name="MarginContainer4" type="MarginContainer" parent="Control/MarginContainer/VBoxContainer/HBoxContainer/Player2Invent/P2ClipCount/P2ClipCount"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
+
+[node name="TextureRect3" type="TextureRect" parent="Control/MarginContainer/VBoxContainer/HBoxContainer/Player2Invent/P2ClipCount/P2ClipCount/MarginContainer4"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("4_xm4ix")
+stretch_mode = 4
+
+[node name="MarginContainer5" type="MarginContainer" parent="Control/MarginContainer/VBoxContainer/HBoxContainer/Player2Invent/P2ClipCount/P2ClipCount"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
+
+[node name="TextureRect2" type="TextureRect" parent="Control/MarginContainer/VBoxContainer/HBoxContainer/Player2Invent/P2ClipCount/P2ClipCount/MarginContainer5"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("4_xm4ix")
+stretch_mode = 4
+
+[node name="MarginContainer6" type="MarginContainer" parent="Control/MarginContainer/VBoxContainer/HBoxContainer/Player2Invent/P2ClipCount/P2ClipCount"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
+
+[node name="TextureRect1" type="TextureRect" parent="Control/MarginContainer/VBoxContainer/HBoxContainer/Player2Invent/P2ClipCount/P2ClipCount/MarginContainer6"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("4_xm4ix")
+stretch_mode = 4
