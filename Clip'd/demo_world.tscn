@@ -1,7 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://cioe0xh8tc7p6"]
+[gd_scene load_steps=8 format=3 uid="uid://cioe0xh8tc7p6"]
 
 [ext_resource type="PackedScene" uid="uid://c7uojemqm3py" path="res://scenes/player/player_1.tscn" id="1_qhirn"]
 [ext_resource type="PackedScene" uid="uid://dtm2npqxofif0" path="res://scenes/player/player_2.tscn" id="2_gt20m"]
+[ext_resource type="PackedScene" uid="uid://rhdd65dwr3ms" path="res://scenes/ui/pause_menu.tscn" id="2_r4ymu"]
+[ext_resource type="PackedScene" uid="uid://cednbypo0lsue" path="res://scenes/player/clip.tscn" id="2_y53md"]
+[ext_resource type="PackedScene" uid="uid://cp4g7j6otc4l8" path="res://scenes/player/fake_clip.tscn" id="3_n5tra"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m14hn"]
 size = Vector2(2008, 20)
@@ -10,10 +13,14 @@ size = Vector2(2008, 20)
 size = Vector2(50, 1130)
 
 [node name="Demo World" type="Node2D"]
+process_mode = 3
 
 [node name="Player 1" parent="." instance=ExtResource("1_qhirn")]
+Clip = ExtResource("2_y53md")
+FakeClip = ExtResource("3_n5tra")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+process_mode = 1
 
 [node name="Control" type="Control" parent="CanvasLayer"]
 layout_mode = 3
@@ -418,6 +425,8 @@ size_flags_vertical = 3
 [node name="Control10" type="Control" parent="CanvasLayer/Control/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+
+[node name="Pause Menu" parent="." instance=ExtResource("2_r4ymu")]
 
 [node name="wall1" type="StaticBody2D" parent="."]
 position = Vector2(-40, 8)

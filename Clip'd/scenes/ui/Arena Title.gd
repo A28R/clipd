@@ -9,11 +9,6 @@ var trenches = preload("res://assets/Players/names5.png")
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass
-<<<<<<< Updated upstream
-#	text = get_tree().current_scene.name.capitalize()
-
-=======
->>>>>>> Stashed changes
 
 func _enter_tree():
 	if get_tree().current_scene.name.to_lower() == "mountains":

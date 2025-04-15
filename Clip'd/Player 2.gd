@@ -95,6 +95,15 @@ var is_rotating := false
 var rotation_direction := 0
 var is_alive = true
 
+# Class variables
+var waiting := false
+var random_card_name1: String
+var random_card_name2: String
+var random_card_name3: String
+var new_card1
+var new_card2
+var new_card3
+
 func kill():
 	is_alive = false
 	print("hit2")
@@ -103,11 +112,13 @@ func kill():
 func death():
 	queue_free()
 	Global.roundover("Player 1")
-	
+	show_cards()
+
 
 func add_card(chosen_card: String):
 	deck.append(chosen_card)
-	var chosen_card_data = CardDatabase.DATA[chosen_card]
+	var card_index = card_names.find(chosen_card)
+	var chosen_card_data = CardDatabase.DATA[card_index]
 	if chosen_card_data[0] == "Self":
 		if chosen_card_data[2] != 0:
 			# Sets new player model size and and counters offset position from that
@@ -215,43 +226,44 @@ func clear_deck():
 
 func show_cards():
 	# Choosing random cards to show
-	var random_card_name1 = card_names[randi() % card_names.size()]
-	var random_card_name2 = card_names[randi() % card_names.size()]
+	random_card_name1 = card_names[randi() % card_names.size()]
+	random_card_name2 = card_names[randi() % card_names.size()]
 	while (random_card_name2 == random_card_name1):
 		random_card_name2 = card_names[randi() % card_names.size()]
-	var random_card_name3 = card_names[randi() % card_names.size()]
+	random_card_name3 = card_names[randi() % card_names.size()]
 	while (random_card_name3 == random_card_name1 or random_card_name3 == random_card_name2):
 		random_card_name3 = card_names[randi() % card_names.size()]
 	
 	# Creating CardBase instances of the chosen random cards
-	var new_card1 = CardBase.instantiate()
-	new_card1.CardName = random_card_name1
-	get_node("/root").add_child(new_card1)
-	var new_card2 = CardBase.instantiate()
-	new_card2.CardName = random_card_name2
-	get_node("/root").add_child(new_card2)
-	var new_card3 = CardBase.instantiate()
-	new_card3.CardName = random_card_name3
-	get_node("/root").add_child(new_card3)
+	new_card1 = CardBase.instantiate()
+	new_card1.set("CardName", random_card_name1)
+	get_tree().root.add_child(new_card1)
+	new_card2 = CardBase.instantiate()
+	new_card2.set("CardName", random_card_name2)
+	get_tree().root.add_child(new_card2)
+	new_card3 = CardBase.instantiate()
+	new_card3.set("CardName", random_card_name3)
+	get_tree().root.add_child(new_card3)
 	
 	# Placing of the cards on the Screen
 	# THIS NEEDS TO BE CHANGED
-	new_card1.scale = Vector2(0.35, 0.35)
-	new_card1.position.x = 175
-	new_card1.position.y = 0
-	new_card1.position.x -= 100
+	new_card1.position.x = 100
+	new_card1.position.y = 200
+	new_card2.position.x = 100
+	new_card2.position.y = 200
+	new_card2.position.x += 250
+	new_card3.position.x = 100
+	new_card3.position.y = 200
+	new_card3.position.x += 500
 	
-	new_card2.scale = Vector2(0.35, 0.35)
-	new_card2.position.x = 175
-	new_card2.position.y = 0
-	
-	new_card3.scale = Vector2(0.35, 0.35)
-	new_card3.position.x = 175
-	new_card3.position.y = 0
-	new_card3.position.x += 100
-
+	pause_and_wait()
 
 func _ready():
+	
+	process_mode = ProcessMode.PROCESS_MODE_ALWAYS
+	
+	if Global.p2roundswon>=3 or Global.p1roundswon>=3:
+		clear_deck()
 	
 	if get_tree().current_scene.name.to_lower() == "demo world":
 		accslider.value = acceleration
@@ -270,7 +282,41 @@ func _ready():
 		
 		clsslider.value = clip_speed
 		clipSpeedlabel.text = "Clip Speed: "+str(clip_speed)
-	
+
+
+func pause_and_wait():
+	get_tree().paused = true
+	waiting = true
+
+func _input(event):
+	if waiting and event is InputEventKey and event.pressed:
+		match event.keycode:
+			KEY_A:
+				print(random_card_name1)
+				add_card(random_card_name1)
+				new_card1.queue_free()
+				new_card2.queue_free()
+				new_card3.queue_free()
+				resume_game()
+			KEY_S:
+				print(random_card_name2)
+				add_card(random_card_name2)
+				new_card1.queue_free()
+				new_card2.queue_free()
+				new_card3.queue_free()
+				resume_game()
+			KEY_D:
+				print(random_card_name3)
+				add_card(random_card_name3)
+				new_card1.queue_free()
+				new_card2.queue_free()
+				new_card3.queue_free()
+				resume_game()
+
+func resume_game():
+	get_tree().paused = false
+	waiting = false
+
 
 func _physics_process(delta):
 	$Sprite/AnimationPlayer.speed_scale = 0.6 + ((current_speed/max_speed)*0.5)

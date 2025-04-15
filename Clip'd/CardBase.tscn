@@ -1,13 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://oixq2v4bu7f8"]
+[gd_scene load_steps=3 format=3 uid="uid://b0noor1mlqpx4"]
 
-[ext_resource type="Script" path="res://Cards/CardBase.gd" id="1_5m1kv"]
+[ext_resource type="Script" path="res://Cards/CardBase.gd" id="1_fmshy"]
 [ext_resource type="Texture2D" uid="uid://cc0b4hqs0lhlm" path="res://Cards/Textures/whitebackground.jpg" id="2_1w1gt"]
 
 [node name="CardBase" type="MarginContainer"]
-offset_right = 250.0
-offset_bottom = 350.0
+offset_left = -125.0
+offset_top = -175.0
+offset_right = 125.0
+offset_bottom = 175.0
 pivot_offset = Vector2(125, 175)
-script = ExtResource("1_5m1kv")
+script = ExtResource("1_fmshy")
 
 [node name="Card" type="Sprite2D" parent="."]
 centered = false

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://b8vmc2bu66snq"]
+[gd_scene load_steps=16 format=3 uid="uid://b8vmc2bu66snq"]
 
 [ext_resource type="Script" path="res://scenes/arenas/arenamanager.gd" id="1_5o6xu"]
 [ext_resource type="PackedScene" uid="uid://dtm2npqxofif0" path="res://scenes/player/player_2.tscn" id="1_nid62"]
@@ -6,7 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://s2vngre6v4fh" path="res://scenes/ui/game_ui.tscn" id="3_bxaew"]
 [ext_resource type="TileSet" uid="uid://bmndssnx0d0wn" path="res://resources/trenches.tres" id="3_oxwil"]
 [ext_resource type="Environment" uid="uid://jpgngsjg5r6e" path="res://scenes/arenas/postprocessing.tres" id="6_1rlti"]
+[ext_resource type="PackedScene" uid="uid://cednbypo0lsue" path="res://scenes/player/clip.tscn" id="6_an2b1"]
 [ext_resource type="PackedScene" uid="uid://c7uojemqm3py" path="res://scenes/player/player_1.tscn" id="6_wn2m5"]
+[ext_resource type="PackedScene" uid="uid://cp4g7j6otc4l8" path="res://scenes/player/fake_clip.tscn" id="7_1u8ok"]
 [ext_resource type="Texture2D" uid="uid://2j6y68fe6hib" path="res://assets/UI/Signs/ui_signs_small4.png" id="8_cfgo1"]
 [ext_resource type="Texture2D" uid="uid://cppkqhqenwk5e" path="res://assets/UI/Signs/ui_signs_small3.png" id="9_lj8pe"]
 [ext_resource type="Texture2D" uid="uid://0c14xknfrgd8" path="res://assets/UI/Signs/ui_signs_small2.png" id="10_pphso"]
@@ -38,6 +40,8 @@ layer_0/tile_data = PackedInt32Array(0, 4, 0, 1, 4, 0, 2, 4, 0, 3, 4, 0, 4, 4, 0
 [node name="Player 1" parent="." instance=ExtResource("6_wn2m5")]
 position = Vector2(80, 176)
 rotation = 3.48787e-16
+Clip = ExtResource("6_an2b1")
+FakeClip = ExtResource("7_1u8ok")
 
 [node name="Player 2" parent="." instance=ExtResource("1_nid62")]
 position = Vector2(496, 176)
